@@ -10,6 +10,7 @@ import {
   Folder,
   Lightbulb,
   Wrench,
+  MessageSquare,
 } from "lucide-react";
 import { useAuthStore } from "@/lib/store/authStore";
 
@@ -44,6 +45,9 @@ export function MobileMenu({
             </Link>
             <Link href="/skills" onClick={onClose}>
               Skills
+            </Link>
+            <Link href="/reviews" onClick={onClose}>
+              Reviews
             </Link>
             <Link href="/ai-insights" onClick={onClose}>
               AI
@@ -85,11 +89,22 @@ export function MobileMenu({
                       <Folder className="w-4 h-4" />
                       <span>Proyectos</span>
                     </Link>
-                    <div className="flex items-center gap-2 text-slate-500 text-sm py-1.5 opacity-50">
+                    <Link
+                      href="/admin/skills"
+                      onClick={onClose}
+                      className="flex items-center gap-2 text-slate-300 hover:text-white text-sm py-1.5"
+                    >
                       <Wrench className="w-4 h-4" />
                       <span>Skills</span>
-                      <span className="text-xs">(Pronto)</span>
-                    </div>
+                    </Link>
+                    <Link
+                      href="/admin/reviews"
+                      onClick={onClose}
+                      className="flex items-center gap-2 text-slate-300 hover:text-white text-sm py-1.5"
+                    >
+                      <MessageSquare className="w-4 h-4" />
+                      <span>Reviews</span>
+                    </Link>
                     <div className="flex items-center gap-2 text-slate-500 text-sm py-1.5 opacity-50">
                       <Lightbulb className="w-4 h-4" />
                       <span>AI Insights</span>

@@ -59,6 +59,13 @@ export default function Header() {
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-linear-to-r from-primary-500 to-purple-600 group-hover:w-full transition-all"></span>
             </Link>
             <Link
+              href="/reviews"
+              className="text-slate-300 hover:text-white transition-colors relative group"
+            >
+              Reviews
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-linear-to-r from-primary-500 to-purple-600 group-hover:w-full transition-all"></span>
+            </Link>
+            <Link
               href="/ai-insights"
               className="text-slate-300 hover:text-white transition-colors relative group"
             >

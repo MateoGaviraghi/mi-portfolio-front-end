@@ -15,6 +15,11 @@ export const skillsAPI = {
     return data;
   },
 
+  getById: async (id: string) => {
+    const { data } = await apiClient.get<Skill>(`/skills/${id}`);
+    return data;
+  },
+
   getStats: async () => {
     const { data } = await apiClient.get("/skills/stats");
     return data;
