@@ -69,7 +69,7 @@ export default function AdminAIInsightsPage() {
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
           <div>
-            <h1 className="text-3xl font-bold bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent mb-2">
+            <h1 className="text-3xl font-bold bg-linear-to-r from-white to-slate-300 bg-clip-text text-transparent mb-2">
               AI Insights
             </h1>
             <p className="text-slate-400">
@@ -77,7 +77,7 @@ export default function AdminAIInsightsPage() {
             </p>
           </div>
           <Link href="/admin/ai-insights/new">
-            <Button className="bg-gradient-to-r from-primary-500 to-purple-600 hover:from-primary-600 hover:to-purple-700">
+            <Button className="bg-linear-to-r from-primary-500 to-purple-600 hover:from-primary-600 hover:to-purple-700">
               <Plus className="w-4 h-4 mr-2" />
               Crear Insight
             </Button>
@@ -94,7 +94,7 @@ export default function AdminAIInsightsPage() {
                   {insights?.length || 0}
                 </p>
               </div>
-              <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-lg flex items-center justify-center">
+              <div className="w-12 h-12 bg-linear-to-br from-blue-500 to-cyan-600 rounded-lg flex items-center justify-center">
                 <Sparkles className="w-6 h-6 text-white" />
               </div>
             </div>
@@ -108,7 +108,7 @@ export default function AdminAIInsightsPage() {
                   {publicInsights.length}
                 </p>
               </div>
-              <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg flex items-center justify-center">
+              <div className="w-12 h-12 bg-linear-to-br from-green-500 to-emerald-600 rounded-lg flex items-center justify-center">
                 <Eye className="w-6 h-6 text-white" />
               </div>
             </div>
@@ -122,7 +122,7 @@ export default function AdminAIInsightsPage() {
                   {draftInsights.length}
                 </p>
               </div>
-              <div className="w-12 h-12 bg-gradient-to-br from-yellow-500 to-orange-600 rounded-lg flex items-center justify-center">
+              <div className="w-12 h-12 bg-linear-to-br from-yellow-500 to-orange-600 rounded-lg flex items-center justify-center">
                 <EyeOff className="w-6 h-6 text-white" />
               </div>
             </div>
@@ -197,7 +197,7 @@ export default function AdminAIInsightsPage() {
                     Crea tu primer insight técnico
                   </p>
                   <Link href="/admin/ai-insights/new">
-                    <Button className="bg-gradient-to-r from-primary-500 to-purple-600">
+                    <Button className="bg-linear-to-r from-primary-500 to-purple-600">
                       <Plus className="w-4 h-4 mr-2" />
                       Crear Primer Insight
                     </Button>

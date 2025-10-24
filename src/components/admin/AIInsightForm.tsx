@@ -198,7 +198,7 @@ export function AIInsightForm({
         <Button
           type="submit"
           isLoading={isLoading}
-          className="bg-gradient-to-r from-primary-500 to-purple-600 hover:from-primary-600 hover:to-purple-700"
+          className="bg-linear-to-r from-primary-500 to-purple-600 hover:from-primary-600 hover:to-purple-700"
         >
           <Sparkles className="w-4 h-4 mr-2" />
           {initialData ? "Actualizar Insight" : "Crear Insight"}
