@@ -176,7 +176,7 @@ export const useAuthStore = create<AuthState>()(
       checkAuth: async () => {
         const token = localStorage.getItem("accessToken");
         const userStr = localStorage.getItem("user");
-        
+
         if (!token || !userStr) {
           set({
             user: null,
@@ -200,7 +200,7 @@ export const useAuthStore = create<AuthState>()(
           });
 
           console.log("✅ Auth checked from localStorage:", user.email);
-          
+
           // TODO: Cuando implementes /auth/me en el backend, descomentar esto:
           // const backendUser = await authAPI.me();
           // localStorage.setItem("user", JSON.stringify(backendUser));
@@ -220,9 +220,10 @@ export const useAuthStore = create<AuthState>()(
             error: null,
           });
         }
-      },      /**
+      }
+      /**
        * Limpiar error
-       */
+       */,
       clearError: () => {
         set({ error: null });
       },

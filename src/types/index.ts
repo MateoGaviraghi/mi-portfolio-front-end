@@ -4,8 +4,8 @@
 
 // Usuario (compatible con backend)
 export interface User {
-  id: string;  // El backend devuelve 'id', no '_id'
-  _id?: string;  // Mantener para compatibilidad con otras partes
+  id: string; // El backend devuelve 'id', no '_id'
+  _id?: string; // Mantener para compatibilidad con otras partes
   email: string;
   name: string;
   role: "admin" | "visitor";
