@@ -10,7 +10,7 @@ export default function AIInsightsPage() {
     error,
   } = useQuery({
     queryKey: ["ai-insights"],
-    queryFn: () => aiInsightsAPI.getAll(),
+    queryFn: () => aiInsightsAPI.getPublic(),
   });
 
   return (

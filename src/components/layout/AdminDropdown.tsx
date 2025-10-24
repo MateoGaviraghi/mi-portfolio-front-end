@@ -100,16 +100,14 @@ export function AdminDropdown() {
               <span>Reviews</span>
             </Link>
 
-            {/* AI Insights (preparado para futuro) */}
+            {/* AI Insights */}
             <Link
               href="/admin/ai-insights"
               onClick={() => setIsOpen(false)}
-              className="flex items-center gap-3 px-4 py-2.5 text-slate-300 hover:text-white hover:bg-slate-800/50 transition-colors opacity-50 cursor-not-allowed"
-              aria-disabled="true"
+              className="flex items-center gap-3 px-4 py-2.5 text-slate-300 hover:text-white hover:bg-slate-800/50 transition-colors"
             >
               <Lightbulb className="w-4 h-4" />
               <span>AI Insights</span>
-              <span className="ml-auto text-xs text-slate-500">Pronto</span>
             </Link>
           </div>
         </div>

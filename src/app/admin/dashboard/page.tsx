@@ -18,7 +18,7 @@ export default function AdminDashboard() {
 
   const { data: insights } = useQuery({
     queryKey: ["ai-insights"],
-    queryFn: () => aiInsightsAPI.getAll(),
+    queryFn: () => aiInsightsAPI.getPublic(),
   });
 
   const stats = [
