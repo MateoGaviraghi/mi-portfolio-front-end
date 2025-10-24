@@ -8,7 +8,6 @@ import {
   ChevronDown,
   LayoutDashboard,
   Folder,
-  Lightbulb,
   Wrench,
   MessageSquare,
 } from "lucide-react";
@@ -48,9 +47,6 @@ export function MobileMenu({
             </Link>
             <Link href="/reviews" onClick={onClose}>
               Reviews
-            </Link>
-            <Link href="/ai-insights" onClick={onClose}>
-              AI
             </Link>
 
             {/* Admin Menu Desplegable */}
@@ -105,11 +101,6 @@ export function MobileMenu({
                       <MessageSquare className="w-4 h-4" />
                       <span>Reviews</span>
                     </Link>
-                    <div className="flex items-center gap-2 text-slate-500 text-sm py-1.5 opacity-50">
-                      <Lightbulb className="w-4 h-4" />
-                      <span>AI Insights</span>
-                      <span className="text-xs">(Pronto)</span>
-                    </div>
                   </div>
                 )}
               </div>

@@ -1,9 +1,8 @@
 "use client";
-import { aiInsightsAPI } from "@/lib/api/ai-insights.api";
 import { projectsAPI } from "@/lib/api/projects.api";
 import { skillsAPI } from "@/lib/api/skills.api";
 import { useQuery } from "@tanstack/react-query";
-import { BarChart3, Folder, Zap, Sparkles, TrendingUp } from "lucide-react";
+import { BarChart3, Folder, Zap, TrendingUp } from "lucide-react";
 
 export default function AdminDashboard() {
   const { data: projects } = useQuery({
@@ -14,11 +13,6 @@ export default function AdminDashboard() {
   const { data: skills } = useQuery({
     queryKey: ["skills"],
     queryFn: skillsAPI.getAll,
-  });
-
-  const { data: insights } = useQuery({
-    queryKey: ["ai-insights"],
-    queryFn: () => aiInsightsAPI.getPublic(),
   });
 
   const stats = [
@@ -37,14 +31,6 @@ export default function AdminDashboard() {
       color: "from-green-500 to-emerald-600",
       bgColor: "from-green-500/10 to-emerald-600/10",
       borderColor: "border-green-500/30",
-    },
-    {
-      title: "AI Insights",
-      value: insights?.length || 0,
-      icon: Sparkles,
-      color: "from-blue-500 to-cyan-600",
-      bgColor: "from-blue-500/10 to-cyan-600/10",
-      borderColor: "border-blue-500/30",
     },
     {
       title: "Vistas Totales",

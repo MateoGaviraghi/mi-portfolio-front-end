@@ -6,7 +6,6 @@ import {
   ChevronDown,
   LayoutDashboard,
   Folder,
-  Lightbulb,
   Wrench,
   MessageSquare,
 } from "lucide-react";
@@ -98,16 +97,6 @@ export function AdminDropdown() {
             >
               <MessageSquare className="w-4 h-4" />
               <span>Reviews</span>
-            </Link>
-
-            {/* AI Insights */}
-            <Link
-              href="/admin/ai-insights"
-              onClick={() => setIsOpen(false)}
-              className="flex items-center gap-3 px-4 py-2.5 text-slate-300 hover:text-white hover:bg-slate-800/50 transition-colors"
-            >
-              <Lightbulb className="w-4 h-4" />
-              <span>AI Insights</span>
             </Link>
           </div>
         </div>
