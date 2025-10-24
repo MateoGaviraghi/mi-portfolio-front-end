@@ -5,7 +5,6 @@ import { useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { useAuthStore } from "@/lib/store/authStore";
 import { MobileMenu } from "./MobileMenu";
-
 export default function Header() {
   const [open, setOpen] = useState(false);
   const { user, logout, isAuthenticated } = useAuthStore();
