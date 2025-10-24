@@ -3,7 +3,7 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
-  aiInsightSchema,
+  aiInsightFormSchema,
   AIInsightInput,
 } from "@/lib/validations/ai-insight.schemas";
 import { Input } from "@/components/ui/Input";
@@ -31,7 +31,7 @@ export function AIInsightForm({
     formState: { errors },
     setValue,
   } = useForm<AIInsightInput>({
-    resolver: zodResolver(aiInsightSchema),
+    resolver: zodResolver(aiInsightFormSchema),
     defaultValues: {
       title: initialData?.title || "",
       content: initialData?.content || "",
