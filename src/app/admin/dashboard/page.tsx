@@ -1,8 +1,8 @@
 "use client";
-import { aiInsightsAPI } from "@/lib/api/ai-insights.api";
+import { useQuery } from "@tanstack/react-query";
 import { projectsAPI } from "@/lib/api/projects.api";
 import { skillsAPI } from "@/lib/api/skills.api";
-import { useQuery } from "@tanstack/react-query";
+import { aiInsightsAPI } from "@/lib/api/ai-insights.api";
 import { BarChart3, Folder, Zap, Sparkles, TrendingUp } from "lucide-react";
 
 export default function AdminDashboard() {
