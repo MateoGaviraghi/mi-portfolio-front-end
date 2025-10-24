@@ -1,9 +1,16 @@
 "use client";
 
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import Link from "next/link";
-import { Shield } from "lucide-react";
+import { 
+  Shield, 
+  ChevronDown, 
+  LayoutDashboard, 
+  Folder, 
+  Lightbulb, 
+  Wrench 
+} from "lucide-react";
 import { useAuthStore } from "@/lib/store/authStore";
 
 export function MobileMenu({
@@ -14,6 +21,7 @@ export function MobileMenu({
   onClose: () => void;
 }) {
   const { isAuthenticated, logout, user } = useAuthStore();
+  const [adminMenuOpen, setAdminMenuOpen] = useState(false);
 
   return (
     <Transition show={isOpen} as={Fragment}>
@@ -41,15 +49,55 @@ export function MobileMenu({
               AI
             </Link>
 
+            {/* Admin Menu Desplegable */}
             {isAuthenticated && user?.role === "admin" && (
-              <Link
-                href="/admin/dashboard"
-                onClick={onClose}
-                className="text-primary-500 font-medium flex items-center gap-2"
-              >
-                <Shield className="w-4 h-4" />
-                Admin
-              </Link>
+              <div className="border-t border-slate-800 pt-3 mt-2">
+                <button
+                  onClick={() => setAdminMenuOpen(!adminMenuOpen)}
+                  className="w-full flex items-center justify-between text-primary-500 font-medium py-2"
+                >
+                  <div className="flex items-center gap-2">
+                    <Shield className="w-4 h-4" />
+                    <span>Admin</span>
+                  </div>
+                  <ChevronDown
+                    className={`w-4 h-4 transition-transform ${
+                      adminMenuOpen ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+
+                {adminMenuOpen && (
+                  <div className="ml-6 mt-2 space-y-2 border-l-2 border-primary-500/30 pl-3">
+                    <Link
+                      href="/admin/dashboard"
+                      onClick={onClose}
+                      className="flex items-center gap-2 text-slate-300 hover:text-white text-sm py-1.5"
+                    >
+                      <LayoutDashboard className="w-4 h-4" />
+                      <span>Dashboard</span>
+                    </Link>
+                    <Link
+                      href="/admin/projects"
+                      onClick={onClose}
+                      className="flex items-center gap-2 text-slate-300 hover:text-white text-sm py-1.5"
+                    >
+                      <Folder className="w-4 h-4" />
+                      <span>Proyectos</span>
+                    </Link>
+                    <div className="flex items-center gap-2 text-slate-500 text-sm py-1.5 opacity-50">
+                      <Wrench className="w-4 h-4" />
+                      <span>Skills</span>
+                      <span className="text-xs">(Pronto)</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-slate-500 text-sm py-1.5 opacity-50">
+                      <Lightbulb className="w-4 h-4" />
+                      <span>AI Insights</span>
+                      <span className="text-xs">(Pronto)</span>
+                    </div>
+                  </div>
+                )}
+              </div>
             )}
 
             {isAuthenticated ? (
