@@ -1,4 +1,3 @@
-import "../globals.css";
 import { Providers } from "../providers";
 
 export const metadata = {
@@ -12,14 +11,10 @@ export default function AuthLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="es">
-      <body className="antialiased">
-        <Providers>
-          <main className="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-slate-950">
-            {children}
-          </main>
-        </Providers>
-      </body>
-    </html>
+    <Providers>
+      <main className="min-h-screen flex items-center justify-center bg-slate-950">
+        {children}
+      </main>
+    </Providers>
   );
 }

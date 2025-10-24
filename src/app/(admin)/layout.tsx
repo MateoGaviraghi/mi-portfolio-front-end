@@ -2,7 +2,6 @@
 
 import RequireAuth from "@/lib/auth/RequireAuth";
 import Header from "@/components/layout/Header";
-import "../globals.css";
 import { Providers } from "../providers";
 
 export default function AdminLayout({
@@ -11,17 +10,13 @@ export default function AdminLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="es">
-      <body className="antialiased">
-        <Providers>
-          <RequireAuth>
-            <div className="min-h-screen">
-              <Header />
-              <div className="p-6">{children}</div>
-            </div>
-          </RequireAuth>
-        </Providers>
-      </body>
-    </html>
+    <Providers>
+      <RequireAuth>
+        <div className="min-h-screen bg-slate-950">
+          <Header />
+          <div className="p-6">{children}</div>
+        </div>
+      </RequireAuth>
+    </Providers>
   );
 }
