@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { AuthInitializer } from "@/components/AuthInitializer";
 import "./globals.css";
 
 const inter = Inter({
@@ -71,7 +72,7 @@ export default function RootLayout({
   return (
     <html lang="es" suppressHydrationWarning className={inter.variable}>
       <body className={`${inter.className} antialiased bg-slate-950`}>
-        {children}
+        <AuthInitializer>{children}</AuthInitializer>
       </body>
     </html>
   );

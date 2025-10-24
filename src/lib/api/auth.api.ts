@@ -23,10 +23,10 @@ export const authAPI = {
       );
 
       // Guardar tokens y usuario automáticamente
-      const { user, tokens } = response.data;
+      const { accessToken, refreshToken, user } = response.data;
 
-      localStorage.setItem("accessToken", tokens.accessToken);
-      localStorage.setItem("refreshToken", tokens.refreshToken);
+      localStorage.setItem("accessToken", accessToken);
+      localStorage.setItem("refreshToken", refreshToken);
       localStorage.setItem("user", JSON.stringify(user));
 
       console.log("✅ User registered and tokens saved");
@@ -46,10 +46,10 @@ export const authAPI = {
       const response = await apiClient.post<AuthResponse>("/auth/login", data);
 
       // Guardar tokens y usuario automáticamente
-      const { user, tokens } = response.data;
+      const { accessToken, refreshToken, user } = response.data;
 
-      localStorage.setItem("accessToken", tokens.accessToken);
-      localStorage.setItem("refreshToken", tokens.refreshToken);
+      localStorage.setItem("accessToken", accessToken);
+      localStorage.setItem("refreshToken", refreshToken);
       localStorage.setItem("user", JSON.stringify(user));
 
       console.log("✅ User logged in and tokens saved");
@@ -108,7 +108,21 @@ export const authAPI = {
   },
 
   /**
-   * Verificar si el usuario está autenticado
+   * Obtener información del usuario autenticado desde el backend
+   */
+  me: async (): Promise<User> => {
+    try {
+      const response = await apiClient.get<{ user: User }>("/auth/me");
+      console.log("✅ User info fetched from backend");
+      return response.data.user;
+    } catch (error) {
+      console.error("❌ Failed to fetch user info:", error);
+      throw error;
+    }
+  },
+
+  /**
+   * Verificar si el usuario está autenticado (desde localStorage)
    */
   checkAuth: (): { isAuthenticated: boolean; user: User | null } => {
     try {

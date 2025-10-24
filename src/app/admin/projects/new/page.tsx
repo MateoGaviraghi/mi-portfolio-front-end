@@ -17,8 +17,8 @@ export default function NewProjectPage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 p-6">
-      <div className="max-w-4xl mx-auto space-y-6">
+    <div className="min-h-screen bg-slate-950 pt-24 pb-12">
+      <div className="max-w-4xl mx-auto px-6 space-y-6">
         {/* Header */}
         <div className="flex items-center gap-4">
           <Link href="/admin/projects">

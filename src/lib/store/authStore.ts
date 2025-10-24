@@ -20,7 +20,7 @@ interface AuthState {
   register: (data: RegisterDto) => Promise<void>;
   logout: () => Promise<void>;
   setUser: (user: User | null) => void;
-  checkAuth: () => void;
+  checkAuth: () => Promise<void>;
   clearError: () => void;
   setLoading: (loading: boolean) => void;
   initialize: () => void;
@@ -170,25 +170,48 @@ export const useAuthStore = create<AuthState>()(
       },
 
       /**
-       * Verificar autenticación existente
+       * Verificar autenticación existente (desde localStorage)
+       * TODO: Implementar endpoint /auth/me en el backend para validación real
        */
-      checkAuth: () => {
+      checkAuth: async () => {
+        const token = localStorage.getItem("accessToken");
+        const userStr = localStorage.getItem("user");
+        
+        if (!token || !userStr) {
+          set({
+            user: null,
+            isAuthenticated: false,
+            isInitialized: true,
+            error: null,
+          });
+          console.log("⚠️ No tokens found, user not authenticated");
+          return;
+        }
+
         try {
-          const { isAuthenticated, user } = authAPI.checkAuth();
+          // Parsear usuario desde localStorage
+          const user = JSON.parse(userStr);
 
           set({
             user,
-            isAuthenticated,
+            isAuthenticated: true,
             isInitialized: true,
             error: null,
           });
 
-          console.log(
-            "✅ Auth checked in store:",
-            isAuthenticated ? user?.email : "not authenticated"
-          );
+          console.log("✅ Auth checked from localStorage:", user.email);
+          
+          // TODO: Cuando implementes /auth/me en el backend, descomentar esto:
+          // const backendUser = await authAPI.me();
+          // localStorage.setItem("user", JSON.stringify(backendUser));
+          // set({ user: backendUser });
         } catch (error) {
-          console.error("❌ Auth check failed in store:", error);
+          console.error("❌ Auth check failed:", error);
+
+          // Limpiar tokens si hay error
+          localStorage.removeItem("accessToken");
+          localStorage.removeItem("refreshToken");
+          localStorage.removeItem("user");
 
           set({
             user: null,
@@ -197,9 +220,7 @@ export const useAuthStore = create<AuthState>()(
             error: null,
           });
         }
-      },
-
-      /**
+      },      /**
        * Limpiar error
        */
       clearError: () => {
@@ -216,10 +237,10 @@ export const useAuthStore = create<AuthState>()(
       /**
        * Inicializar store (llamar al montar la app)
        */
-      initialize: () => {
+      initialize: async () => {
         const state = get();
         if (!state.isInitialized) {
-          state.checkAuth();
+          await state.checkAuth();
         }
       },
     }),

@@ -57,8 +57,8 @@ export default function AdminDashboard() {
   ];
 
   return (
-    <div className="min-h-screen bg-slate-950 p-6">
-      <div className="max-w-7xl mx-auto space-y-8">
+    <div className="min-h-screen bg-slate-950 pt-24 pb-12">
+      <div className="max-w-7xl mx-auto px-6 space-y-8">
         {/* Header */}
         <div className="flex items-center gap-3 mb-8">
           <div className="w-12 h-12 rounded-lg bg-linear-to-br from-primary-500 to-purple-600 flex items-center justify-center">

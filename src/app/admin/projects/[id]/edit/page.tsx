@@ -38,7 +38,7 @@ export default function EditProjectPage({
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-slate-950 p-6 flex items-center justify-center">
+      <div className="min-h-screen bg-slate-950 pt-24 pb-12 flex items-center justify-center">
         <p className="text-slate-400">Cargando proyecto...</p>
       </div>
     );
@@ -46,7 +46,7 @@ export default function EditProjectPage({
 
   if (!project) {
     return (
-      <div className="min-h-screen bg-slate-950 p-6 flex items-center justify-center">
+      <div className="min-h-screen bg-slate-950 pt-24 pb-12 flex items-center justify-center">
         <div className="text-center">
           <p className="text-slate-400 mb-4">Proyecto no encontrado</p>
           <Link href="/admin/projects">
@@ -58,8 +58,8 @@ export default function EditProjectPage({
   }
 
   return (
-    <div className="min-h-screen bg-slate-950 p-6">
-      <div className="max-w-4xl mx-auto space-y-8">
+    <div className="min-h-screen bg-slate-950 pt-24 pb-12">
+      <div className="max-w-4xl mx-auto px-6 space-y-8">
         {/* Header */}
         <div className="flex items-center gap-4">
           <Link href="/admin/projects">

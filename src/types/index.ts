@@ -2,9 +2,10 @@
 // TYPES PRINCIPALES
 // ===========================
 
-// Usuario
+// Usuario (compatible con backend)
 export interface User {
-  _id: string;
+  id: string;  // El backend devuelve 'id', no '_id'
+  _id?: string;  // Mantener para compatibilidad con otras partes
   email: string;
   name: string;
   role: "admin" | "visitor";
@@ -13,8 +14,8 @@ export interface User {
   linkedin?: string;
   github?: string;
   refreshToken?: string;
-  createdAt: string;
-  updatedAt: string;
+  createdAt?: string;
+  updatedAt?: string;
 }
 
 // Auth DTOs
@@ -33,12 +34,15 @@ export interface RefreshTokenDto {
   refreshToken: string;
 }
 
-// Auth Response
+// Auth Response (estructura del backend)
 export interface AuthResponse {
-  user: User;
-  tokens: {
-    accessToken: string;
-    refreshToken: string;
+  accessToken: string;
+  refreshToken: string;
+  user: {
+    id: string;
+    email: string;
+    name: string;
+    role: "admin" | "visitor";
   };
 }
 
