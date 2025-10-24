@@ -3,6 +3,7 @@
 import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import Link from "next/link";
+import { Shield } from "lucide-react";
 import { useAuthStore } from "@/lib/store/authStore";
 
 export function MobileMenu({
@@ -39,6 +40,17 @@ export function MobileMenu({
             <Link href="/ai-insights" onClick={onClose}>
               AI
             </Link>
+
+            {isAuthenticated && user?.role === "admin" && (
+              <Link
+                href="/admin/dashboard"
+                onClick={onClose}
+                className="text-primary-500 font-medium flex items-center gap-2"
+              >
+                <Shield className="w-4 h-4" />
+                Admin
+              </Link>
+            )}
 
             {isAuthenticated ? (
               <>

@@ -64,6 +64,17 @@ export default function Header() {
               AI Insights
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-linear-to-r from-primary-500 to-purple-600 group-hover:w-full transition-all"></span>
             </Link>
+
+            {/* Mostrar Admin solo si el usuario es admin */}
+            {isAuthenticated && user?.role === "admin" && (
+              <Link
+                href="/admin/dashboard"
+                className="text-primary-400 hover:text-primary-300 transition-colors relative group font-semibold"
+              >
+                Admin
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-linear-to-r from-primary-400 to-purple-500 group-hover:w-full transition-all"></span>
+              </Link>
+            )}
           </nav>
 
           {/* Auth & Social */}
