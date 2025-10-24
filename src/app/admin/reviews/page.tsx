@@ -4,20 +4,60 @@ import { useQuery } from "@tanstack/react-query";
 import { reviewsAPI, Review } from "@/lib/api/reviews.api";
 import { useReviewMutations } from "@/hooks/useReviewMutations";
 import { Button } from "@/components/ui/Button";
-import { CheckCircle, XCircle, Trash2, Clock, Star } from "lucide-react";
+import {
+  CheckCircle,
+  XCircle,
+  Trash2,
+  Clock,
+  Star,
+  AlertCircle,
+} from "lucide-react";
+import { useState } from "react";
 
 export default function AdminReviewsPage() {
+  const [backendError, setBackendError] = useState(false);
+
   const { data: reviews, isLoading } = useQuery({
     queryKey: ["reviews-all"],
     queryFn: async () => {
       try {
-        return await reviewsAPI.getAll();
-      } catch (_err) {
-        // Si falla getAll(), usar el endpoint público como fallback
-        console.warn("Endpoint /reviews/all no disponible, usando /reviews");
-        return await reviewsAPI.getApproved();
+        const data = await reviewsAPI.getAll();
+        setBackendError(false);
+        return data;
+      } catch (error: unknown) {
+        // Si es error 401, el usuario no tiene permisos de admin
+        const axiosError = error as { response?: { status?: number } };
+        if (axiosError?.response?.status === 401) {
+          console.warn(
+            "Usuario sin permisos de admin, usando endpoint público"
+          );
+          try {
+            const data = await reviewsAPI.getApproved();
+            setBackendError(false);
+            return data;
+          } catch {
+            console.error("Backend de reviews no disponible");
+            setBackendError(true);
+            return [];
+          }
+        }
+
+        // Si es otro error, intentar fallback
+        try {
+          console.warn(
+            "Endpoint /reviews/all no disponible, intentando /reviews"
+          );
+          const data = await reviewsAPI.getApproved();
+          setBackendError(false);
+          return data;
+        } catch {
+          console.error("Backend de reviews no disponible");
+          setBackendError(true);
+          return [];
+        }
       }
     },
+    retry: false,
   });
 
   const { approveReview, rejectReview, deleteReview } = useReviewMutations();
@@ -36,9 +76,9 @@ export default function AdminReviewsPage() {
     }
   };
 
-  const pendingReviews = reviews?.filter((r) => r.status === "pending") || [];
-  const approvedReviews = reviews?.filter((r) => r.status === "approved") || [];
-  const rejectedReviews = reviews?.filter((r) => r.status === "rejected") || [];
+  // ✅ Filtros usando isPublic (true = aprobada, false = pendiente)
+  const approvedReviews = reviews?.filter((r) => r.isPublic) || [];
+  const pendingReviews = reviews?.filter((r) => !r.isPublic) || [];
 
   return (
     <div className="min-h-screen bg-slate-950 pt-24 pb-12">
@@ -100,13 +140,18 @@ export default function AdminReviewsPage() {
           <div className="bg-slate-900/50 backdrop-blur-sm border border-slate-800 rounded-xl p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-slate-400 text-sm mb-1">Rechazadas</p>
-                <p className="text-3xl font-bold text-red-500">
-                  {rejectedReviews.length}
+                <p className="text-slate-400 text-sm mb-1">Rating Promedio</p>
+                <p className="text-3xl font-bold text-amber-500">
+                  {reviews && reviews.length > 0
+                    ? (
+                        reviews.reduce((acc, r) => acc + r.rating, 0) /
+                        reviews.length
+                      ).toFixed(1)
+                    : "0.0"}
                 </p>
               </div>
-              <div className="w-12 h-12 bg-linear-to-br from-red-500 to-rose-600 rounded-lg flex items-center justify-center">
-                <XCircle className="w-6 h-6 text-white" />
+              <div className="w-12 h-12 bg-linear-to-br from-amber-500 to-orange-600 rounded-lg flex items-center justify-center">
+                <Star className="w-6 h-6 text-white fill-white" />
               </div>
             </div>
           </div>
@@ -116,6 +161,56 @@ export default function AdminReviewsPage() {
         {isLoading ? (
           <div className="text-center py-12">
             <div className="animate-spin w-8 h-8 border-4 border-primary-500 border-t-transparent rounded-full mx-auto"></div>
+          </div>
+        ) : backendError ? (
+          /* Backend Error Message */
+          <div className="bg-amber-500/10 border-2 border-amber-500/50 rounded-xl p-8 text-center">
+            <AlertCircle className="w-16 h-16 text-amber-500 mx-auto mb-4" />
+            <h3 className="text-2xl font-bold text-amber-400 mb-2">
+              Módulo de Reviews no disponible
+            </h3>
+            <p className="text-slate-300 mb-4">
+              El backend aún no tiene implementado el módulo de reviews.
+            </p>
+            <div className="bg-slate-900/50 rounded-lg p-4 text-left max-w-2xl mx-auto">
+              <p className="text-sm text-slate-400 mb-2">
+                <strong className="text-white">Endpoints necesarios:</strong>
+              </p>
+              <ul className="text-sm text-slate-400 space-y-1 list-disc list-inside">
+                <li>
+                  <code className="text-primary-400">GET /reviews</code> -
+                  Obtener reviews aprobadas (público)
+                </li>
+                <li>
+                  <code className="text-primary-400">GET /reviews/all</code> -
+                  Obtener todas las reviews (admin)
+                </li>
+                <li>
+                  <code className="text-primary-400">POST /reviews</code> -
+                  Crear nueva review
+                </li>
+                <li>
+                  <code className="text-primary-400">
+                    POST /reviews/:id/approve
+                  </code>{" "}
+                  - Aprobar review
+                </li>
+                <li>
+                  <code className="text-primary-400">
+                    POST /reviews/:id/reject
+                  </code>{" "}
+                  - Rechazar review
+                </li>
+                <li>
+                  <code className="text-primary-400">DELETE /reviews/:id</code>{" "}
+                  - Eliminar review
+                </li>
+              </ul>
+            </div>
+            <p className="text-sm text-slate-500 mt-4">
+              Una vez implementados estos endpoints, esta página funcionará
+              automáticamente.
+            </p>
           </div>
         ) : (
           <div className="space-y-6">
@@ -161,27 +256,6 @@ export default function AdminReviewsPage() {
               </div>
             )}
 
-            {/* Rechazadas */}
-            {rejectedReviews.length > 0 && (
-              <div>
-                <h2 className="text-xl font-bold text-red-500 mb-4 flex items-center gap-2">
-                  <XCircle className="w-5 h-5" />
-                  Rechazadas
-                </h2>
-                <div className="space-y-4">
-                  {rejectedReviews.map((review) => (
-                    <ReviewItem
-                      key={review._id}
-                      review={review}
-                      onApprove={handleApprove}
-                      onReject={handleReject}
-                      onDelete={handleDelete}
-                    />
-                  ))}
-                </div>
-              </div>
-            )}
-
             {!reviews ||
               (reviews.length === 0 && (
                 <div className="bg-slate-900/50 backdrop-blur-sm border border-slate-800 rounded-xl p-12 text-center">
@@ -214,15 +288,15 @@ function ReviewItem({
   onReject,
   onDelete,
 }: ReviewItemProps) {
-  const getStatusColor = (status: string) => {
-    switch (status) {
-      case "approved":
-        return "bg-green-500/20 text-green-400 border-green-500/50";
-      case "rejected":
-        return "bg-red-500/20 text-red-400 border-red-500/50";
-      default:
-        return "bg-yellow-500/20 text-yellow-400 border-yellow-500/50";
-    }
+  // ✅ Convertir isPublic a estado legible
+  const getStatusColor = () => {
+    return review.isPublic
+      ? "bg-green-500/20 text-green-400 border-green-500/50"
+      : "bg-yellow-500/20 text-yellow-400 border-yellow-500/50";
+  };
+
+  const getStatusText = () => {
+    return review.isPublic ? "Aprobada" : "Pendiente";
   };
 
   return (
@@ -240,15 +314,9 @@ function ReviewItem({
               </p>
             </div>
             <span
-              className={`px-3 py-1 text-xs font-semibold rounded-full border ${getStatusColor(
-                review.status
-              )}`}
+              className={`px-3 py-1 text-xs font-semibold rounded-full border ${getStatusColor()}`}
             >
-              {review.status === "approved"
-                ? "Aprobada"
-                : review.status === "rejected"
-                ? "Rechazada"
-                : "Pendiente"}
+              {getStatusText()}
             </span>
           </div>
 
@@ -277,7 +345,8 @@ function ReviewItem({
         </div>
 
         <div className="flex flex-col gap-2 ml-4">
-          {review.status === "pending" && (
+          {/* Mostrar botones aprobar/rechazar solo si NO está aprobada */}
+          {!review.isPublic && (
             <>
               <Button
                 size="sm"
@@ -298,6 +367,7 @@ function ReviewItem({
               </Button>
             </>
           )}
+          {/* Botón eliminar siempre disponible */}
           <Button
             size="sm"
             variant="outline"
