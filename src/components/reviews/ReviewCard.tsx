@@ -2,15 +2,18 @@
 
 import { Review } from "@/lib/api/reviews.api";
 import { Star } from "lucide-react";
+import Image from "next/image";
 
 export function ReviewCard({ review }: { review: Review }) {
   return (
     <div className="bg-slate-900/50 backdrop-blur-sm border border-slate-800 rounded-xl p-6 space-y-4 hover:border-slate-700 transition-all">
       <div className="flex items-center gap-4">
         {review.avatar ? (
-          <img
+          <Image
             src={review.avatar}
             alt={review.name}
+            width={56}
+            height={56}
             className="w-14 h-14 rounded-full object-cover border-2 border-primary-500/30"
           />
         ) : (
