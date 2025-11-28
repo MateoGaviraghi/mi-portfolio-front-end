@@ -13,7 +13,6 @@ import {
   Mail,
   Download,
 } from "lucide-react";
-import { AboutSection } from "@/components/home/AboutSection";
 
 export default function Home() {
   const [mounted, setMounted] = useState(false);
@@ -87,16 +86,17 @@ export default function Home() {
             </Link>
             <a
               href="/cv/mateo-gaviraghi-cv.pdf"
-              download
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-block"
             >
               <Button
                 size="lg"
                 variant="outline"
-                className="border-slate-700 hover:border-slate-600 hover:bg-slate-800/50"
+                className="group border-primary-500/50 hover:border-primary-500 hover:bg-primary-500/10"
               >
-                <Download className="w-5 h-5 mr-2" />
-                Descargar CV
+                <Download className="w-5 h-5 mr-2 text-primary-400" />
+                Ver CV
               </Button>
             </a>
           </div>
@@ -168,9 +168,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-
-      {/* About Section */}
-      <AboutSection />
     </div>
   );
 }

@@ -63,6 +63,19 @@ export default function Header() {
               ></span>
             </Link>
             <Link
+              href="/sobre-mi"
+              className={`text-slate-300 hover:text-white transition-colors relative group ${
+                isActive("/sobre-mi") ? "text-white" : ""
+              }`}
+            >
+              Sobre Mí
+              <span
+                className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-primary-500 to-purple-600 transition-all ${
+                  isActive("/sobre-mi") ? "w-full" : "w-0 group-hover:w-full"
+                }`}
+              ></span>
+            </Link>
+            <Link
               href="/skills"
               className={`text-slate-300 hover:text-white transition-colors relative group ${
                 isActive("/skills") ? "text-white" : ""
