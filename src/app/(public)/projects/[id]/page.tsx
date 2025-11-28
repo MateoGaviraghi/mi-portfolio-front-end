@@ -78,11 +78,11 @@ export default function ProjectDetailPage({
         <div className="space-y-4">
           <div className="flex items-start justify-between gap-4">
             <div className="flex-1">
-              <h1 className="text-4xl md:text-5xl font-bold bg-linear-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent mb-3">
+              <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent mb-3">
                 {project.title}
               </h1>
               {project.featured && (
-                <span className="inline-block px-3 py-1 bg-linear-to-r from-primary-500 to-purple-600 text-white text-sm rounded-full font-semibold">
+                <span className="inline-block px-3 py-1 bg-gradient-to-r from-primary-500 to-purple-600 text-white text-sm rounded-full font-semibold">
                   ⭐ Proyecto Destacado
                 </span>
               )}
@@ -130,7 +130,7 @@ export default function ProjectDetailPage({
           )}
           {project.liveUrl && (
             <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
-              <Button className="bg-linear-to-r from-primary-500 to-purple-600 hover:from-primary-600 hover:to-purple-700">
+              <Button className="bg-gradient-to-r from-primary-500 to-purple-600 hover:from-primary-600 hover:to-purple-700">
                 <ExternalLink className="w-4 h-4 mr-2" />
                 Ver Demo en vivo
               </Button>

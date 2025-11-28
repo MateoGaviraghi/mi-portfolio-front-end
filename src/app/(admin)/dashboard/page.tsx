@@ -47,11 +47,11 @@ export default function AdminDashboard() {
       <div className="max-w-7xl mx-auto space-y-8">
         {/* Header */}
         <div className="flex items-center gap-3 mb-8">
-          <div className="w-12 h-12 rounded-lg bg-linear-to-br from-primary-500 to-purple-600 flex items-center justify-center">
+          <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-primary-500 to-purple-600 flex items-center justify-center">
             <BarChart3 className="w-6 h-6 text-white" />
           </div>
           <div>
-            <h1 className="text-4xl font-bold bg-linear-to-r from-white to-slate-300 bg-clip-text text-transparent">
+            <h1 className="text-4xl font-bold bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">
               Dashboard Admin
             </h1>
             <p className="text-slate-400 mt-1">
@@ -67,11 +67,11 @@ export default function AdminDashboard() {
             return (
               <div
                 key={index}
-                className={`bg-linear-to-br ${stat.bgColor} border ${stat.borderColor} rounded-xl p-6 hover:scale-105 transition-transform`}
+                className={`bg-gradient-to-br ${stat.bgColor} border ${stat.borderColor} rounded-xl p-6 hover:scale-105 transition-transform`}
               >
                 <div className="flex items-center justify-between mb-4">
                   <div
-                    className={`w-12 h-12 rounded-lg bg-linear-to-br ${stat.color} flex items-center justify-center`}
+                    className={`w-12 h-12 rounded-lg bg-gradient-to-br ${stat.color} flex items-center justify-center`}
                   >
                     <Icon className="w-6 h-6 text-white" />
                   </div>

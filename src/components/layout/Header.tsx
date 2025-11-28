@@ -32,13 +32,13 @@ export default function Header() {
           {/* Logo con animación */}
           <Link href="/" className="group flex items-center gap-3 relative">
             <div className="relative">
-              <div className="absolute -inset-2 bg-linear-to-r from-primary-500 to-purple-600 rounded-lg blur opacity-30 group-hover:opacity-100 transition duration-300"></div>
-              <div className="relative w-10 h-10 bg-linear-to-br from-primary-500 to-purple-600 rounded-lg flex items-center justify-center font-bold text-white text-xl">
+              <div className="absolute -inset-2 bg-gradient-to-r from-primary-500 to-purple-600 rounded-lg blur opacity-30 group-hover:opacity-100 transition duration-300"></div>
+              <div className="relative w-10 h-10 bg-gradient-to-br from-primary-500 to-purple-600 rounded-lg flex items-center justify-center font-bold text-white text-xl">
                 M
               </div>
             </div>
-            <span className="font-bold text-xl bg-linear-to-r from-white to-slate-300 bg-clip-text text-transparent">
-              Mi Portfolio
+            <span className="font-bold text-xl bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">
+              Mateo Gaviraghi
             </span>
           </Link>
 
@@ -49,21 +49,21 @@ export default function Header() {
               className="text-slate-300 hover:text-white transition-colors relative group"
             >
               Proyectos
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-linear-to-r from-primary-500 to-purple-600 group-hover:w-full transition-all"></span>
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary-500 to-purple-600 group-hover:w-full transition-all"></span>
             </Link>
             <Link
               href="/skills"
               className="text-slate-300 hover:text-white transition-colors relative group"
             >
               Skills
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-linear-to-r from-primary-500 to-purple-600 group-hover:w-full transition-all"></span>
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary-500 to-purple-600 group-hover:w-full transition-all"></span>
             </Link>
             <Link
               href="/reviews"
               className="text-slate-300 hover:text-white transition-colors relative group"
             >
               Reviews
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-linear-to-r from-primary-500 to-purple-600 group-hover:w-full transition-all"></span>
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary-500 to-purple-600 group-hover:w-full transition-all"></span>
             </Link>
 
             {/* Dropdown Admin solo si el usuario es admin */}
@@ -74,21 +74,23 @@ export default function Header() {
           <div className="flex items-center gap-4">
             <div className="hidden lg:flex items-center gap-3">
               <a
-                href="https://github.com"
+                href="https://github.com/MateoGaviraghi"
                 target="_blank"
+                rel="noopener noreferrer"
                 className="text-slate-400 hover:text-white transition-colors"
               >
                 <Github className="w-5 h-5" />
               </a>
               <a
-                href="https://linkedin.com"
+                href="https://linkedin.com/in/mateo-gaviraghi"
                 target="_blank"
+                rel="noopener noreferrer"
                 className="text-slate-400 hover:text-white transition-colors"
               >
                 <Linkedin className="w-5 h-5" />
               </a>
               <a
-                href="mailto:tu@email.com"
+                href="mailto:contacto@mateogaviraghi.com"
                 className="text-slate-400 hover:text-white transition-colors"
               >
                 <Mail className="w-5 h-5" />
@@ -114,7 +116,7 @@ export default function Header() {
                   </Button>
                 </Link>
                 <Link href="/register">
-                  <Button className="bg-linear-to-r from-primary-500 to-purple-600 hover:from-primary-600 hover:to-purple-700">
+                  <Button className="bg-gradient-to-r from-primary-500 to-purple-600 hover:from-primary-600 hover:to-purple-700">
                     Registrarse
                   </Button>
                 </Link>

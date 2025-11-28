@@ -24,10 +24,10 @@ export function LoginForm() {
     <div className="w-full max-w-md">
       {/* Header */}
       <div className="text-center mb-8">
-        <div className="w-14 h-14 mx-auto mb-4 rounded-xl bg-linear-to-br from-primary-500 to-purple-600 flex items-center justify-center">
+        <div className="w-14 h-14 mx-auto mb-4 rounded-xl bg-gradient-to-br from-primary-500 to-purple-600 flex items-center justify-center">
           <Sparkles className="w-7 h-7 text-white" />
         </div>
-        <h1 className="text-3xl font-bold bg-linear-to-r from-white to-slate-300 bg-clip-text text-transparent mb-2">
+        <h1 className="text-3xl font-bold bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent mb-2">
           Bienvenido de vuelta
         </h1>
         <p className="text-slate-400">Inicia sesión para acceder a tu cuenta</p>
@@ -109,7 +109,7 @@ export function LoginForm() {
         <Button
           type="submit"
           isLoading={loading}
-          className="w-full bg-linear-to-r from-primary-500 to-purple-600 hover:from-primary-600 hover:to-purple-700"
+          className="w-full bg-gradient-to-r from-primary-500 to-purple-600 hover:from-primary-600 hover:to-purple-700"
         >
           Iniciar Sesión
         </Button>

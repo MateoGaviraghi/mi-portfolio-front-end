@@ -29,7 +29,7 @@ export default function ReviewsPage() {
       <div className="container max-w-7xl mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold bg-linear-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent mb-4">
             Lo que dicen sobre mí
           </h1>
           <p className="text-slate-400 text-lg mb-8">
@@ -39,7 +39,7 @@ export default function ReviewsPage() {
           {!showForm && (
             <Button
               onClick={() => setShowForm(true)}
-              className="bg-linear-to-r from-primary-500 to-purple-600 hover:from-primary-600 hover:to-purple-700"
+              className="bg-gradient-to-r from-primary-500 to-purple-600 hover:from-primary-600 hover:to-purple-700"
             >
               <Plus className="w-4 h-4 mr-2" />
               Dejar una Review
@@ -90,7 +90,7 @@ export default function ReviewsPage() {
             {!showForm && (
               <Button
                 onClick={() => setShowForm(true)}
-                className="bg-linear-to-r from-primary-500 to-purple-600"
+                className="bg-gradient-to-r from-primary-500 to-purple-600"
               >
                 <Plus className="w-4 h-4 mr-2" />
                 Dejar la primera review

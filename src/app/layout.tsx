@@ -11,8 +11,8 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "Tu Nombre - Full Stack Developer",
-    template: "%s | Tu Nombre - Full Stack Developer",
+    default: "Mateo Gaviraghi - Full Stack Developer",
+    template: "%s | Mateo Gaviraghi",
   },
   description:
     "Portfolio profesional de desarrollo Full Stack con AI. Especialista en Next.js, NestJS, TypeScript y tecnologías modernas.",
@@ -26,9 +26,9 @@ export const metadata: Metadata = {
     "AI Development",
     "Portfolio",
   ],
-  authors: [{ name: "Tu Nombre" }],
-  creator: "Tu Nombre",
-  publisher: "Tu Nombre",
+  authors: [{ name: "Mateo Gaviraghi" }],
+  creator: "Mateo Gaviraghi",
+  publisher: "Mateo Gaviraghi",
   formatDetection: {
     email: false,
     address: false,
@@ -41,15 +41,15 @@ export const metadata: Metadata = {
     type: "website",
     locale: "es_ES",
     url: "/",
-    title: "Tu Nombre - Full Stack Developer",
+    title: "Mateo Gaviraghi - Full Stack Developer",
     description: "Portfolio profesional de desarrollo Full Stack con AI",
-    siteName: "Tu Nombre Portfolio",
+    siteName: "Mateo Gaviraghi Portfolio",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Tu Nombre - Full Stack Developer",
+    title: "Mateo Gaviraghi - Full Stack Developer",
     description: "Portfolio profesional de desarrollo Full Stack con AI",
-    creator: "@tu_username",
+    creator: "@mateogaviraghi",
   },
   robots: {
     index: true,

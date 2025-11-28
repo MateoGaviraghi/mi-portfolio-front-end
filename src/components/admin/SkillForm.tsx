@@ -102,7 +102,7 @@ export function SkillForm({ initialData, onSubmit, isLoading }: Props) {
       <Button
         type="submit"
         isLoading={isLoading}
-        className="w-full bg-linear-to-r from-primary-500 to-purple-600 hover:from-primary-600 hover:to-purple-700"
+        className="w-full bg-gradient-to-r from-primary-500 to-purple-600 hover:from-primary-600 hover:to-purple-700"
       >
         {initialData ? "Actualizar" : "Crear"} Skill
       </Button>

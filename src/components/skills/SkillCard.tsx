@@ -5,7 +5,7 @@ export function SkillCard({ skill }: { skill: Skill }) {
     <div className="bg-slate-900/50 backdrop-blur-xl border border-slate-800/50 rounded-xl p-5 space-y-4 hover:border-primary-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary-500/5">
       <div className="flex items-center gap-3">
         {skill.icon && (
-          <div className="w-12 h-12 rounded-lg bg-linear-to-br from-primary-500/20 to-purple-600/20 flex items-center justify-center text-2xl border border-primary-500/30">
+          <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-primary-500/20 to-purple-600/20 flex items-center justify-center text-2xl border border-primary-500/30">
             {skill.icon}
           </div>
         )}
@@ -26,7 +26,7 @@ export function SkillCard({ skill }: { skill: Skill }) {
       <div className="space-y-2">
         <div className="w-full bg-slate-800/50 rounded-full h-2 overflow-hidden">
           <div
-            className="bg-linear-to-r from-primary-500 to-purple-600 h-2 rounded-full transition-all duration-1000 ease-out relative overflow-hidden"
+            className="bg-gradient-to-r from-primary-500 to-purple-600 h-2 rounded-full transition-all duration-1000 ease-out relative overflow-hidden"
             style={{ width: `${skill.level}%` }}
           >
             <div className="absolute inset-0 bg-white/20 animate-pulse" />

@@ -33,10 +33,10 @@ export function RegisterForm() {
     <div className="w-full max-w-md">
       {/* Header */}
       <div className="text-center mb-8">
-        <div className="w-14 h-14 mx-auto mb-4 rounded-xl bg-linear-to-br from-purple-500 to-pink-600 flex items-center justify-center">
+        <div className="w-14 h-14 mx-auto mb-4 rounded-xl bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center">
           <Sparkles className="w-7 h-7 text-white" />
         </div>
-        <h1 className="text-3xl font-bold bg-linear-to-r from-white to-slate-300 bg-clip-text text-transparent mb-2">
+        <h1 className="text-3xl font-bold bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent mb-2">
           Crea tu cuenta
         </h1>
         <p className="text-slate-400">
@@ -159,7 +159,7 @@ export function RegisterForm() {
         </div>
 
         {/* Benefits Box */}
-        <div className="bg-linear-to-br from-purple-500/10 to-pink-600/10 border border-purple-500/30 rounded-lg p-4">
+        <div className="bg-gradient-to-br from-purple-500/10 to-pink-600/10 border border-purple-500/30 rounded-lg p-4">
           <p className="text-sm font-semibold text-slate-300 mb-3">
             Al registrarte obtienes:
           </p>
@@ -197,7 +197,7 @@ export function RegisterForm() {
         <Button
           type="submit"
           isLoading={loading}
-          className="w-full bg-linear-to-r from-purple-500 to-pink-600 hover:from-purple-600 hover:to-pink-700"
+          className="w-full bg-gradient-to-r from-purple-500 to-pink-600 hover:from-purple-600 hover:to-pink-700"
         >
           Crear Cuenta
         </Button>

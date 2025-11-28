@@ -71,11 +71,11 @@ export default function EditProjectPage({
         </div>
 
         <div className="flex items-center gap-3">
-          <div className="w-12 h-12 rounded-lg bg-linear-to-br from-primary-500 to-purple-600 flex items-center justify-center">
+          <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-primary-500 to-purple-600 flex items-center justify-center">
             <Edit className="w-6 h-6 text-white" />
           </div>
           <div>
-            <h1 className="text-3xl font-bold bg-linear-to-r from-white to-slate-300 bg-clip-text text-transparent">
+            <h1 className="text-3xl font-bold bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">
               Editar Proyecto
             </h1>
             <p className="text-slate-400 mt-1">{project.title}</p>

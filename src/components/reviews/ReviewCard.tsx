@@ -17,7 +17,7 @@ export function ReviewCard({ review }: { review: Review }) {
             className="w-14 h-14 rounded-full object-cover border-2 border-primary-500/30"
           />
         ) : (
-          <div className="w-14 h-14 rounded-full bg-linear-to-br from-primary-500 to-purple-600 flex items-center justify-center text-white font-bold text-xl">
+          <div className="w-14 h-14 rounded-full bg-gradient-to-br from-primary-500 to-purple-600 flex items-center justify-center text-white font-bold text-xl">
             {review.name.charAt(0).toUpperCase()}
           </div>
         )}

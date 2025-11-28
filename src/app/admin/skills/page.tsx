@@ -27,7 +27,7 @@ export default function AdminSkillsPage() {
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
           <div>
-            <h1 className="text-3xl font-bold bg-linear-to-r from-white to-slate-300 bg-clip-text text-transparent mb-2">
+            <h1 className="text-3xl font-bold bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent mb-2">
               Skills
             </h1>
             <p className="text-slate-400">
@@ -35,7 +35,7 @@ export default function AdminSkillsPage() {
             </p>
           </div>
           <Link href="/admin/skills/new">
-            <Button className="bg-linear-to-r from-primary-500 to-purple-600 hover:from-primary-600 hover:to-purple-700">
+            <Button className="bg-gradient-to-r from-primary-500 to-purple-600 hover:from-primary-600 hover:to-purple-700">
               <Plus className="w-4 h-4 mr-2" />
               Nueva Skill
             </Button>
@@ -52,7 +52,7 @@ export default function AdminSkillsPage() {
                   {skills?.length || 0}
                 </p>
               </div>
-              <div className="w-12 h-12 bg-linear-to-br from-blue-500 to-cyan-600 rounded-lg flex items-center justify-center">
+              <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-lg flex items-center justify-center">
                 <TrendingUp className="w-6 h-6 text-white" />
               </div>
             </div>
@@ -72,7 +72,7 @@ export default function AdminSkillsPage() {
                   %
                 </p>
               </div>
-              <div className="w-12 h-12 bg-linear-to-br from-green-500 to-emerald-600 rounded-lg flex items-center justify-center">
+              <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg flex items-center justify-center">
                 <TrendingUp className="w-6 h-6 text-white" />
               </div>
             </div>
@@ -86,7 +86,7 @@ export default function AdminSkillsPage() {
                   {skills ? new Set(skills.map((s) => s.category)).size : 0}
                 </p>
               </div>
-              <div className="w-12 h-12 bg-linear-to-br from-purple-500 to-pink-600 rounded-lg flex items-center justify-center">
+              <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-600 rounded-lg flex items-center justify-center">
                 <TrendingUp className="w-6 h-6 text-white" />
               </div>
             </div>
@@ -131,7 +131,7 @@ export default function AdminSkillsPage() {
                       </div>
                       <div className="w-full bg-slate-800 rounded-full h-2">
                         <div
-                          className="bg-linear-to-r from-primary-500 to-purple-600 h-2 rounded-full transition-all"
+                          className="bg-gradient-to-r from-primary-500 to-purple-600 h-2 rounded-full transition-all"
                           style={{ width: `${skill.level}%` }}
                         />
                       </div>
@@ -178,7 +178,7 @@ export default function AdminSkillsPage() {
               Comienza agregando tus habilidades técnicas
             </p>
             <Link href="/admin/skills/new">
-              <Button className="bg-linear-to-r from-primary-500 to-purple-600">
+              <Button className="bg-gradient-to-r from-primary-500 to-purple-600">
                 <Plus className="w-4 h-4 mr-2" />
                 Crear primera skill
               </Button>

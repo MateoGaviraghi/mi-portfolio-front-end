@@ -33,7 +33,7 @@ export default function NewSkillPage() {
 
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold bg-linear-to-r from-white to-slate-300 bg-clip-text text-transparent mb-2">
+          <h1 className="text-3xl font-bold bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent mb-2">
             Nueva Skill
           </h1>
           <p className="text-slate-400">

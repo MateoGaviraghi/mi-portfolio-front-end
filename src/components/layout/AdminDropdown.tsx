@@ -46,7 +46,7 @@ export function AdminDropdown() {
             isOpen ? "rotate-180" : ""
           }`}
         />
-        <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-linear-to-r from-primary-400 to-purple-500 group-hover:w-full transition-all"></span>
+        <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary-400 to-purple-500 group-hover:w-full transition-all"></span>
       </button>
 
       {/* Dropdown Menu */}

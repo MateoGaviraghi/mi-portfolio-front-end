@@ -18,10 +18,10 @@ export function ProjectCard({ project }: { project: Project }) {
           fill
           className="object-cover transition-transform duration-500 group-hover:scale-110"
         />
-        <div className="absolute inset-0 bg-linear-to-t from-slate-900 via-slate-900/50 to-transparent opacity-60" />
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/50 to-transparent opacity-60" />
 
         {project.featured && (
-          <div className="absolute top-3 right-3 px-3 py-1 bg-linear-to-r from-primary-500 to-purple-600 rounded-full text-xs font-semibold">
+          <div className="absolute top-3 right-3 px-3 py-1 bg-gradient-to-r from-primary-500 to-purple-600 rounded-full text-xs font-semibold">
             Destacado
           </div>
         )}

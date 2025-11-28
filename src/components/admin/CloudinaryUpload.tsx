@@ -63,7 +63,7 @@ export function CloudinaryUpload({ type, onUpload, isLoading }: Props) {
           onClick={handleUpload}
           disabled={!file || isLoading}
           isLoading={isLoading}
-          className="bg-linear-to-r from-primary-500 to-purple-600 hover:from-primary-600 hover:to-purple-700"
+          className="bg-gradient-to-r from-primary-500 to-purple-600 hover:from-primary-600 hover:to-purple-700"
         >
           <Upload className="w-4 h-4 mr-2" />
           Subir

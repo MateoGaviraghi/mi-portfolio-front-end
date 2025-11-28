@@ -53,11 +53,11 @@ export default function Home() {
           {/* Main Heading */}
           <div className="space-y-4">
             <h1 className="text-6xl md:text-8xl font-bold">
-              <span className="bg-linear-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">
                 Full Stack
               </span>
               <br />
-              <span className="bg-linear-to-r from-primary-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-primary-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
                 Developer
               </span>
             </h1>
@@ -75,13 +75,13 @@ export default function Home() {
             <Link href="/projects">
               <Button
                 size="lg"
-                className="group bg-linear-to-r from-primary-500 to-purple-600 hover:from-primary-600 hover:to-purple-700 shadow-lg shadow-primary-500/25 hover:shadow-primary-500/40 transition-all"
+                className="group bg-gradient-to-r from-primary-500 to-purple-600 hover:from-primary-600 hover:to-purple-700 shadow-lg shadow-primary-500/25 hover:shadow-primary-500/40 transition-all"
               >
                 Ver Proyectos
                 <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
             </Link>
-            <a href="mailto:tu@email.com">
+            <a href="mailto:contacto@mateogaviraghi.com">
               <Button
                 size="lg"
                 variant="outline"
@@ -96,21 +96,23 @@ export default function Home() {
           {/* Social Links */}
           <div className="flex items-center justify-center gap-4 pt-8">
             <a
-              href="https://github.com"
+              href="https://github.com/MateoGaviraghi"
               target="_blank"
+              rel="noopener noreferrer"
               className="w-12 h-12 rounded-full bg-slate-800/50 hover:bg-slate-700 flex items-center justify-center text-slate-400 hover:text-white transition-all hover:scale-110 border border-slate-700/50"
             >
               <Github className="w-5 h-5" />
             </a>
             <a
-              href="https://linkedin.com"
+              href="https://linkedin.com/in/mateo-gaviraghi"
               target="_blank"
+              rel="noopener noreferrer"
               className="w-12 h-12 rounded-full bg-slate-800/50 hover:bg-slate-700 flex items-center justify-center text-slate-400 hover:text-white transition-all hover:scale-110 border border-slate-700/50"
             >
               <Linkedin className="w-5 h-5" />
             </a>
             <a
-              href="mailto:tu@email.com"
+              href="mailto:contacto@mateogaviraghi.com"
               className="w-12 h-12 rounded-full bg-slate-800/50 hover:bg-slate-700 flex items-center justify-center text-slate-400 hover:text-white transition-all hover:scale-110 border border-slate-700/50"
             >
               <Mail className="w-5 h-5" />

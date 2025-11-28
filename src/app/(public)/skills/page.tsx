@@ -28,11 +28,11 @@ export default function SkillsPage() {
         {/* Header */}
         <div className="mb-12 space-y-4">
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-lg bg-linear-to-br from-primary-500 to-purple-600 flex items-center justify-center">
+            <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-primary-500 to-purple-600 flex items-center justify-center">
               <Zap className="w-6 h-6 text-white" />
             </div>
             <div>
-              <h1 className="text-4xl font-bold bg-linear-to-r from-white to-slate-300 bg-clip-text text-transparent">
+              <h1 className="text-4xl font-bold bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">
                 Skills & Tecnologías
               </h1>
               <p className="text-slate-400 mt-1">
@@ -67,11 +67,11 @@ export default function SkillsPage() {
             {Object.entries(groupedSkills).map(([category, categorySkills]) => (
               <div key={category} className="space-y-6">
                 <div className="flex items-center gap-3">
-                  <div className="h-px flex-1 bg-linear-to-r from-transparent via-slate-800 to-transparent" />
+                  <div className="h-px flex-1 bg-gradient-to-r from-transparent via-slate-800 to-transparent" />
                   <h2 className="text-xl font-bold text-slate-300 uppercase tracking-wider">
                     {category}
                   </h2>
-                  <div className="h-px flex-1 bg-linear-to-r from-transparent via-slate-800 to-transparent" />
+                  <div className="h-px flex-1 bg-gradient-to-r from-transparent via-slate-800 to-transparent" />
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -99,21 +99,21 @@ export default function SkillsPage() {
         {/* Stats Summary */}
         {!isLoading && !error && skills && skills.length > 0 && (
           <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-linear-to-br from-primary-500/10 to-purple-600/10 border border-primary-500/30 rounded-xl p-6 text-center">
+            <div className="bg-gradient-to-br from-primary-500/10 to-purple-600/10 border border-primary-500/30 rounded-xl p-6 text-center">
               <div className="text-4xl font-bold text-primary-400 mb-2">
                 {skills.length}
               </div>
               <div className="text-slate-400">Total Skills</div>
             </div>
 
-            <div className="bg-linear-to-br from-green-500/10 to-emerald-600/10 border border-green-500/30 rounded-xl p-6 text-center">
+            <div className="bg-gradient-to-br from-green-500/10 to-emerald-600/10 border border-green-500/30 rounded-xl p-6 text-center">
               <div className="text-4xl font-bold text-green-400 mb-2">
                 {skills.filter((s) => s.level >= 80).length}
               </div>
               <div className="text-slate-400">Nivel Avanzado</div>
             </div>
 
-            <div className="bg-linear-to-br from-blue-500/10 to-cyan-600/10 border border-blue-500/30 rounded-xl p-6 text-center">
+            <div className="bg-gradient-to-br from-blue-500/10 to-cyan-600/10 border border-blue-500/30 rounded-xl p-6 text-center">
               <div className="text-4xl font-bold text-blue-400 mb-2">
                 {Object.keys(groupedSkills || {}).length}
               </div>

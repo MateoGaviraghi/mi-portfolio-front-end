@@ -85,7 +85,7 @@ export default function AdminReviewsPage() {
       <div className="container max-w-7xl mx-auto px-6">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold bg-linear-to-r from-white to-slate-300 bg-clip-text text-transparent mb-2">
+          <h1 className="text-3xl font-bold bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent mb-2">
             Gestión de Reviews
           </h1>
           <p className="text-slate-400">
@@ -103,7 +103,7 @@ export default function AdminReviewsPage() {
                   {reviews?.length || 0}
                 </p>
               </div>
-              <div className="w-12 h-12 bg-linear-to-br from-blue-500 to-cyan-600 rounded-lg flex items-center justify-center">
+              <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-lg flex items-center justify-center">
                 <Star className="w-6 h-6 text-white" />
               </div>
             </div>
@@ -117,7 +117,7 @@ export default function AdminReviewsPage() {
                   {pendingReviews.length}
                 </p>
               </div>
-              <div className="w-12 h-12 bg-linear-to-br from-yellow-500 to-orange-600 rounded-lg flex items-center justify-center">
+              <div className="w-12 h-12 bg-gradient-to-br from-yellow-500 to-orange-600 rounded-lg flex items-center justify-center">
                 <Clock className="w-6 h-6 text-white" />
               </div>
             </div>
@@ -131,7 +131,7 @@ export default function AdminReviewsPage() {
                   {approvedReviews.length}
                 </p>
               </div>
-              <div className="w-12 h-12 bg-linear-to-br from-green-500 to-emerald-600 rounded-lg flex items-center justify-center">
+              <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg flex items-center justify-center">
                 <CheckCircle className="w-6 h-6 text-white" />
               </div>
             </div>
@@ -150,7 +150,7 @@ export default function AdminReviewsPage() {
                     : "0.0"}
                 </p>
               </div>
-              <div className="w-12 h-12 bg-linear-to-br from-amber-500 to-orange-600 rounded-lg flex items-center justify-center">
+              <div className="w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-600 rounded-lg flex items-center justify-center">
                 <Star className="w-6 h-6 text-white fill-white" />
               </div>
             </div>
@@ -304,7 +304,7 @@ function ReviewItem({
       <div className="flex items-start justify-between">
         <div className="flex-1">
           <div className="flex items-center gap-3 mb-3">
-            <div className="w-12 h-12 rounded-full bg-linear-to-br from-primary-500 to-purple-600 flex items-center justify-center text-white font-bold">
+            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary-500 to-purple-600 flex items-center justify-center text-white font-bold">
               {review.name.charAt(0).toUpperCase()}
             </div>
             <div>
