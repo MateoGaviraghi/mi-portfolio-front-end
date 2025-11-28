@@ -45,7 +45,7 @@ export function SkillsSection() {
   }, []);
 
   return (
-    <section className="min-h-screen flex items-center justify-center px-6 lg:px-24 py-24">
+    <section className="flex items-center justify-center px-6 lg:px-24 py-12 md:py-20">
       <div className="max-w-5xl w-full">
         <div className="space-y-12">
           <div className={mounted ? "animate-slide-in-left" : "opacity-0"}>

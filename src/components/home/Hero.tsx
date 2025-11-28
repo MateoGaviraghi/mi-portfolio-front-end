@@ -7,6 +7,8 @@ import {
   Github,
   Linkedin,
   Mail,
+  MapPin,
+  Phone,
 } from "lucide-react";
 import { useEffect, useState } from "react";
 import Link from "next/link";
@@ -72,6 +74,21 @@ export function Hero() {
           </p>
 
           <div
+            className={`flex flex-col gap-2 pt-2 ${
+              mounted ? "animate-slide-in-up animate-delay-300" : "opacity-0"
+            }`}
+          >
+            <div className="flex items-center gap-2 text-muted-foreground">
+              <MapPin className="w-4 h-4 text-secondary" />
+              <span>Santa Fe, Argentina</span>
+            </div>
+            <div className="flex items-center gap-2 text-muted-foreground">
+              <Phone className="w-4 h-4 text-secondary" />
+              <span>+54 9 342 516-2081</span>
+            </div>
+          </div>
+
+          <div
             className={`flex flex-wrap gap-4 pt-4 ${
               mounted ? "animate-slide-in-up animate-delay-400" : "opacity-0"
             }`}
@@ -100,7 +117,7 @@ export function Hero() {
             }`}
           >
             <a
-              href="https://github.com/mateogaviraghi"
+              href="https://github.com/MateoGaviraghi"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-secondary transition-colors transform hover:scale-110"
@@ -108,7 +125,7 @@ export function Hero() {
               <Github className="w-6 h-6" />
             </a>
             <a
-              href="https://linkedin.com/in/mateogaviraghi"
+              href="https://www.linkedin.com/in/mateo-gaviraghi-2133482a8/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-secondary transition-colors transform hover:scale-110"

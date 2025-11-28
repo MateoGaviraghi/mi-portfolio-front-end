@@ -181,7 +181,9 @@ function handleApiError(error: AxiosError<ApiError>): void {
       url: error.config?.url,
       method: error.config?.method,
       message,
-      fullError: error,
+      // Evitar serializar el error completo si es muy grande o circular
+      name: error.name,
+      code: error.code,
     });
   }
 }
