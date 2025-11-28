@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/Button";
 import { useAuthStore } from "@/lib/store/authStore";
@@ -12,12 +13,16 @@ export default function Header() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { user, logout, isAuthenticated } = useAuthStore();
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Helper function to check if link is active
+  const isActive = (path: string) => pathname === path;
 
   return (
     <header
@@ -46,24 +51,55 @@ export default function Header() {
           <nav className="hidden md:flex items-center gap-8">
             <Link
               href="/projects"
-              className="text-slate-300 hover:text-white transition-colors relative group"
+              className={`text-slate-300 hover:text-white transition-colors relative group ${
+                isActive("/projects") ? "text-white" : ""
+              }`}
             >
               Proyectos
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary-500 to-purple-600 group-hover:w-full transition-all"></span>
+              <span
+                className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-primary-500 to-purple-600 transition-all ${
+                  isActive("/projects") ? "w-full" : "w-0 group-hover:w-full"
+                }`}
+              ></span>
             </Link>
             <Link
               href="/skills"
-              className="text-slate-300 hover:text-white transition-colors relative group"
+              className={`text-slate-300 hover:text-white transition-colors relative group ${
+                isActive("/skills") ? "text-white" : ""
+              }`}
             >
               Skills
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary-500 to-purple-600 group-hover:w-full transition-all"></span>
+              <span
+                className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-primary-500 to-purple-600 transition-all ${
+                  isActive("/skills") ? "w-full" : "w-0 group-hover:w-full"
+                }`}
+              ></span>
             </Link>
             <Link
               href="/reviews"
-              className="text-slate-300 hover:text-white transition-colors relative group"
+              className={`text-slate-300 hover:text-white transition-colors relative group ${
+                isActive("/reviews") ? "text-white" : ""
+              }`}
             >
               Reviews
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary-500 to-purple-600 group-hover:w-full transition-all"></span>
+              <span
+                className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-primary-500 to-purple-600 transition-all ${
+                  isActive("/reviews") ? "w-full" : "w-0 group-hover:w-full"
+                }`}
+              ></span>
+            </Link>
+            <Link
+              href="/contacto"
+              className={`text-slate-300 hover:text-white transition-colors relative group ${
+                isActive("/contacto") ? "text-white" : ""
+              }`}
+            >
+              Contacto
+              <span
+                className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-primary-500 to-purple-600 transition-all ${
+                  isActive("/contacto") ? "w-full" : "w-0 group-hover:w-full"
+                }`}
+              ></span>
             </Link>
 
             {/* Dropdown Admin solo si el usuario es admin */}

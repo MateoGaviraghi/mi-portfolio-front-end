@@ -89,25 +89,15 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="pt-8 border-t border-slate-800 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-slate-500 text-sm flex items-center gap-2">
-            © {new Date().getFullYear()} Todos los derechos reservados.
+        <div className="pt-8 border-t border-slate-800 text-center">
+          <p className="text-slate-500 text-sm flex items-center justify-center gap-2">
+            © {new Date().getFullYear()} Mateo Gaviraghi. Todos los derechos
+            reservados.
             <span className="flex items-center gap-1">
               Hecho con <Heart className="w-3 h-3 text-red-500 fill-red-500" />{" "}
               y Next.js
             </span>
           </p>
-          <div className="flex gap-6 text-sm text-slate-500">
-            <a href="#" className="hover:text-slate-300 transition-colors">
-              Privacidad
-            </a>
-            <a href="#" className="hover:text-slate-300 transition-colors">
-              Términos
-            </a>
-            <a href="#" className="hover:text-slate-300 transition-colors">
-              Contacto
-            </a>
-          </div>
         </div>
       </div>
     </footer>

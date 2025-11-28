@@ -11,7 +11,9 @@ import {
   Github,
   Linkedin,
   Mail,
+  Download,
 } from "lucide-react";
+import { AboutSection } from "@/components/home/AboutSection";
 
 export default function Home() {
   const [mounted, setMounted] = useState(false);
@@ -32,7 +34,7 @@ export default function Home() {
       </div>
 
       {/* Grid Pattern */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-size-[50px_50px] mask-[radial-gradient(ellipse_80%_50%_at_50%_50%,black,transparent)]"></div>
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[length:50px_50px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,black,transparent)]"></div>
 
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 pt-32 pb-20">
@@ -62,11 +64,13 @@ export default function Home() {
               </span>
             </h1>
             <p className="text-xl md:text-2xl text-slate-400 max-w-3xl mx-auto leading-relaxed">
-              Transformo ideas en experiencias digitales excepcionales
-              utilizando
-              <span className="text-primary-400 font-semibold"> Next.js</span>,
-              <span className="text-blue-400 font-semibold"> TypeScript</span> y
-              <span className="text-purple-400 font-semibold"> AI</span>
+              Creo soluciones completas desde el{" "}
+              <span className="text-primary-400 font-semibold">Frontend</span>{" "}
+              (React, Next.js) hasta el{" "}
+              <span className="text-green-400 font-semibold">Backend</span>{" "}
+              (NestJS, Node.js) con{" "}
+              <span className="text-blue-400 font-semibold">TypeScript</span>,{" "}
+              <span className="text-purple-400 font-semibold">IA</span> y más
             </p>
           </div>
 
@@ -81,14 +85,18 @@ export default function Home() {
                 <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
             </Link>
-            <a href="mailto:contacto@mateogaviraghi.com">
+            <a
+              href="/cv/mateo-gaviraghi-cv.pdf"
+              download
+              className="inline-block"
+            >
               <Button
                 size="lg"
                 variant="outline"
                 className="border-slate-700 hover:border-slate-600 hover:bg-slate-800/50"
               >
-                <Mail className="w-5 h-5 mr-2" />
-                Contáctame
+                <Download className="w-5 h-5 mr-2" />
+                Descargar CV
               </Button>
             </a>
           </div>
@@ -160,6 +168,9 @@ export default function Home() {
           </div>
         </div>
       </div>
+
+      {/* About Section */}
+      <AboutSection />
     </div>
   );
 }
