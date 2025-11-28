@@ -2,191 +2,122 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { cn } from "@/lib/utils/cn";
 import { useState, useEffect } from "react";
-import { Button } from "@/components/ui/Button";
-import { useAuthStore } from "@/lib/store/authStore";
-import { MobileMenu } from "./MobileMenu";
-import { AdminDropdown } from "./AdminDropdown";
-import { Menu, Github, Linkedin, Mail } from "lucide-react";
+import { Menu, X } from "lucide-react";
 
-export default function Header() {
-  const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const { user, logout, isAuthenticated } = useAuthStore();
+const navItems = [
+  { href: "/", label: "Home" },
+  { href: "/sobre-mi", label: "About Me" },
+  { href: "/projects", label: "Projects" },
+  { href: "/skills", label: "Skills" },
+  { href: "/reviews", label: "Reviews" },
+  { href: "/contacto", label: "Contact" },
+];
+
+export function Header() {
   const pathname = usePathname();
+  const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Helper function to check if link is active
-  const isActive = (path: string) => pathname === path;
-
   return (
     <header
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+      className={cn(
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         scrolled
-          ? "bg-slate-900/95 backdrop-blur-lg shadow-lg border-b border-slate-800"
-          : "bg-transparent"
-      }`}
+          ? "bg-background/95 backdrop-blur-md border-b border-border/50 shadow-lg"
+          : "bg-background/60 backdrop-blur-sm border-b border-border/20"
+      )}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 md:py-4">
+      <nav className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          {/* Logo con animación */}
           <Link
             href="/"
-            className="group flex items-center gap-2 sm:gap-3 relative"
+            className="group relative flex items-center justify-center"
           >
-            <div className="relative">
-              <div className="absolute -inset-2 bg-gradient-to-r from-primary-500 to-purple-600 rounded-lg blur opacity-30 group-hover:opacity-100 transition duration-300"></div>
-              <div className="relative w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-primary-500 to-purple-600 rounded-lg flex items-center justify-center font-bold text-white text-base sm:text-xl">
-                M
-              </div>
+            <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-secondary/50 group-hover:border-secondary transition-colors duration-300 bg-muted flex items-center justify-center">
+              <span className="text-secondary font-bold text-lg">MG</span>
             </div>
-            <span className="font-bold text-base sm:text-lg md:text-xl bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">
-              Mateo Gaviraghi
-            </span>
+            <span className="absolute inset-0 rounded-full bg-secondary/20 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
           </Link>
 
-          {/* Navegación Desktop */}
-          <nav className="hidden xl:flex items-center gap-4 lg:gap-8">
-            <Link
-              href="/projects"
-              className={`text-slate-300 hover:text-white transition-colors relative group ${
-                isActive("/projects") ? "text-white" : ""
-              }`}
-            >
-              Proyectos
-              <span
-                className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-primary-500 to-purple-600 transition-all ${
-                  isActive("/projects") ? "w-full" : "w-0 group-hover:w-full"
-                }`}
-              ></span>
-            </Link>
-            <Link
-              href="/sobre-mi"
-              className={`text-slate-300 hover:text-white transition-colors relative group ${
-                isActive("/sobre-mi") ? "text-white" : ""
-              }`}
-            >
-              Sobre Mí
-              <span
-                className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-primary-500 to-purple-600 transition-all ${
-                  isActive("/sobre-mi") ? "w-full" : "w-0 group-hover:w-full"
-                }`}
-              ></span>
-            </Link>
-            <Link
-              href="/skills"
-              className={`text-slate-300 hover:text-white transition-colors relative group ${
-                isActive("/skills") ? "text-white" : ""
-              }`}
-            >
-              Skills
-              <span
-                className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-primary-500 to-purple-600 transition-all ${
-                  isActive("/skills") ? "w-full" : "w-0 group-hover:w-full"
-                }`}
-              ></span>
-            </Link>
-            <Link
-              href="/reviews"
-              className={`text-slate-300 hover:text-white transition-colors relative group ${
-                isActive("/reviews") ? "text-white" : ""
-              }`}
-            >
-              Reviews
-              <span
-                className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-primary-500 to-purple-600 transition-all ${
-                  isActive("/reviews") ? "w-full" : "w-0 group-hover:w-full"
-                }`}
-              ></span>
-            </Link>
-            <Link
-              href="/contacto"
-              className={`text-slate-300 hover:text-white transition-colors relative group ${
-                isActive("/contacto") ? "text-white" : ""
-              }`}
-            >
-              Contacto
-              <span
-                className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-primary-500 to-purple-600 transition-all ${
-                  isActive("/contacto") ? "w-full" : "w-0 group-hover:w-full"
-                }`}
-              ></span>
-            </Link>
+          <ul className="hidden md:flex items-center gap-2">
+            {navItems.map(({ href, label }) => {
+              const isActive = pathname === href;
+              return (
+                <li key={href} className="relative">
+                  <Link
+                    href={href}
+                    className={cn(
+                      "relative px-4 py-2 text-sm font-medium transition-all duration-300 rounded-lg overflow-hidden group",
+                      isActive
+                        ? "text-secondary"
+                        : "text-muted-foreground hover:text-foreground"
+                    )}
+                  >
+                    <span className="relative z-10">{label}</span>
+                    {/* Efecto de fondo hover */}
+                    <span className="absolute inset-0 bg-secondary/10 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+                    {/* Indicador activo */}
+                    {isActive && (
+                      <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-secondary to-accent animate-pulse" />
+                    )}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
 
-            {/* Dropdown Admin solo si el usuario es admin */}
-            {isAuthenticated && user?.role === "admin" && <AdminDropdown />}
-          </nav>
-
-          {/* Auth & Social */}
-          <div className="flex items-center gap-2 sm:gap-4">
-            <div className="hidden sm:flex items-center gap-2 lg:gap-3">
-              <a
-                href="https://github.com/MateoGaviraghi"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-slate-400 hover:text-white transition-colors"
-              >
-                <Github className="w-5 h-5" />
-              </a>
-              <a
-                href="https://linkedin.com/in/mateo-gaviraghi"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-slate-400 hover:text-white transition-colors"
-              >
-                <Linkedin className="w-5 h-5" />
-              </a>
-              <a
-                href="mailto:contacto@mateogaviraghi.com"
-                className="text-slate-400 hover:text-white transition-colors"
-              >
-                <Mail className="w-5 h-5" />
-              </a>
-            </div>
-
-            {isAuthenticated ? (
-              <div className="hidden sm:flex items-center gap-3">
-                <span className="text-slate-300 text-sm">{user?.name}</span>
-                <Button
-                  variant="outline"
-                  onClick={logout}
-                  className="border-slate-700 hover:border-slate-600"
-                >
-                  Salir
-                </Button>
-              </div>
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="md:hidden p-2 hover:bg-muted rounded-lg transition-colors"
+            aria-label="Toggle menu"
+          >
+            {mobileMenuOpen ? (
+              <X className="w-6 h-6" />
             ) : (
-              <div className="hidden sm:flex gap-3">
-                <Link href="/login">
-                  <Button variant="ghost" className="text-slate-300">
-                    Iniciar
-                  </Button>
-                </Link>
-                <Link href="/register">
-                  <Button className="bg-gradient-to-r from-primary-500 to-purple-600 hover:from-primary-600 hover:to-purple-700">
-                    Registrarse
-                  </Button>
-                </Link>
-              </div>
-            )}
-
-            <button
-              className="xl:hidden text-white p-2"
-              onClick={() => setOpen(true)}
-              aria-label="Abrir menú"
-            >
               <Menu className="w-6 h-6" />
-            </button>
-          </div>
+            )}
+          </button>
         </div>
-      </div>
 
-      <MobileMenu isOpen={open} onClose={() => setOpen(false)} />
+        <div
+          className={cn(
+            "md:hidden overflow-hidden transition-all duration-300 ease-in-out",
+            mobileMenuOpen ? "max-h-96 opacity-100 mt-4" : "max-h-0 opacity-0"
+          )}
+        >
+          <ul className="space-y-2 pb-4">
+            {navItems.map(({ href, label }) => {
+              const isActive = pathname === href;
+              return (
+                <li key={href}>
+                  <Link
+                    href={href}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className={cn(
+                      "block px-4 py-3 rounded-lg transition-all duration-200",
+                      isActive
+                        ? "bg-secondary/20 text-secondary font-semibold border-l-4 border-secondary"
+                        : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                    )}
+                  >
+                    {label}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      </nav>
     </header>
   );
 }

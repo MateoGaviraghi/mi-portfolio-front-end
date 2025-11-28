@@ -35,31 +35,33 @@ export function ReviewForm({ onSubmit, isLoading }: Props) {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Nombre */}
         <div>
-          <label className="block text-sm font-medium text-slate-300 mb-2">
+          <label className="block text-sm font-medium text-foreground mb-2">
             Nombre Completo
           </label>
           <Input
             {...register("name")}
             placeholder="Juan Pérez"
-            className="bg-slate-900/50 border-slate-800"
+            className="bg-background/50 border-border focus:border-secondary"
           />
           {errors.name && (
-            <p className="text-red-400 text-sm mt-1">{errors.name.message}</p>
+            <p className="text-destructive text-sm mt-1">
+              {errors.name.message}
+            </p>
           )}
         </div>
 
         {/* Posición */}
         <div>
-          <label className="block text-sm font-medium text-slate-300 mb-2">
+          <label className="block text-sm font-medium text-foreground mb-2">
             Posición
           </label>
           <Input
             {...register("position")}
             placeholder="Senior Developer"
-            className="bg-slate-900/50 border-slate-800"
+            className="bg-background/50 border-border focus:border-secondary"
           />
           {errors.position && (
-            <p className="text-red-400 text-sm mt-1">
+            <p className="text-destructive text-sm mt-1">
               {errors.position.message}
             </p>
           )}
@@ -68,22 +70,24 @@ export function ReviewForm({ onSubmit, isLoading }: Props) {
 
       {/* Empresa */}
       <div>
-        <label className="block text-sm font-medium text-slate-300 mb-2">
+        <label className="block text-sm font-medium text-foreground mb-2">
           Empresa
         </label>
         <Input
           {...register("company")}
           placeholder="Tech Company Inc."
-          className="bg-slate-900/50 border-slate-800"
+          className="bg-background/50 border-border focus:border-secondary"
         />
         {errors.company && (
-          <p className="text-red-400 text-sm mt-1">{errors.company.message}</p>
+          <p className="text-destructive text-sm mt-1">
+            {errors.company.message}
+          </p>
         )}
       </div>
 
       {/* Rating */}
       <div>
-        <label className="block text-sm font-medium text-slate-300 mb-2">
+        <label className="block text-sm font-medium text-foreground mb-2">
           Calificación
         </label>
         <div className="flex gap-2">
@@ -98,57 +102,63 @@ export function ReviewForm({ onSubmit, isLoading }: Props) {
                 className={`w-8 h-8 ${
                   star <= rating
                     ? "fill-yellow-500 text-yellow-500"
-                    : "text-slate-700"
+                    : "text-muted/50"
                 }`}
               />
             </button>
           ))}
         </div>
         {errors.rating && (
-          <p className="text-red-400 text-sm mt-1">{errors.rating.message}</p>
+          <p className="text-destructive text-sm mt-1">
+            {errors.rating.message}
+          </p>
         )}
       </div>
 
       {/* Comentario */}
       <div>
-        <label className="block text-sm font-medium text-slate-300 mb-2">
+        <label className="block text-sm font-medium text-foreground mb-2">
           Tu Comentario
         </label>
         <textarea
           {...register("content")}
           placeholder="Comparte tu experiencia trabajando conmigo..."
-          className="w-full px-4 py-3 bg-slate-900/50 border border-slate-800 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent resize-none"
+          className="w-full px-4 py-3 bg-background/50 border border-border rounded-lg text-foreground focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent resize-none"
           rows={5}
         />
         {errors.content && (
-          <p className="text-red-400 text-sm mt-1">{errors.content.message}</p>
+          <p className="text-destructive text-sm mt-1">
+            {errors.content.message}
+          </p>
         )}
       </div>
 
       {/* Avatar URL */}
       <div>
-        <label className="block text-sm font-medium text-slate-300 mb-2">
+        <label className="block text-sm font-medium text-foreground mb-2">
           Avatar URL (opcional)
         </label>
         <Input
           {...register("avatar")}
           placeholder="https://example.com/avatar.jpg"
-          className="bg-slate-900/50 border-slate-800"
+          className="bg-background/50 border-border focus:border-secondary"
         />
         {errors.avatar && (
-          <p className="text-red-400 text-sm mt-1">{errors.avatar.message}</p>
+          <p className="text-destructive text-sm mt-1">
+            {errors.avatar.message}
+          </p>
         )}
       </div>
 
       <Button
         type="submit"
         isLoading={isLoading}
-        className="w-full bg-gradient-to-r from-primary-500 to-purple-600 hover:from-primary-600 hover:to-purple-700"
+        className="w-full bg-secondary text-secondary-foreground hover:bg-secondary/90 shadow-lg"
       >
         Enviar Review
       </Button>
 
-      <p className="text-xs text-slate-500 text-center">
+      <p className="text-xs text-muted-foreground text-center">
         Tu review será revisada antes de ser publicada
       </p>
     </form>

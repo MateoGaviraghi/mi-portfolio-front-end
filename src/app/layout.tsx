@@ -70,8 +70,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" suppressHydrationWarning className={inter.variable}>
-      <body className={`${inter.className} antialiased bg-slate-950`}>
+    <html
+      lang="es"
+      suppressHydrationWarning
+      className={`${inter.variable} dark`}
+    >
+      <body
+        className={`${inter.className} antialiased bg-background text-foreground`}
+        suppressHydrationWarning
+      >
         <AuthInitializer>{children}</AuthInitializer>
       </body>
     </html>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
@@ -19,7 +19,6 @@ import {
   MessageSquare,
 } from "lucide-react";
 import Link from "next/link";
-import { useEffect } from "react";
 import toast from "react-hot-toast";
 
 // Declare Calendly on Window
@@ -39,6 +38,12 @@ type ContactMode = "schedule" | "message";
 export default function ContactoPage() {
   const [mode, setMode] = useState<ContactMode>("schedule");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setMounted(true), 0);
+    return () => clearTimeout(timer);
+  }, []);
 
   const calendlyUrl =
     process.env.NEXT_PUBLIC_CALENDLY_URL ||
@@ -111,44 +116,67 @@ export default function ContactoPage() {
   }, [customCalendlyUrl, mode]);
 
   return (
-    <div className="min-h-screen bg-slate-950 text-white">
-      <div className="relative pt-20 sm:pt-24 pb-12 md:pb-20">
+    <div className="min-h-screen bg-background text-foreground relative overflow-hidden">
+      {/* Background Blobs */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-3xl animate-float" />
+        <div
+          className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent/10 rounded-full blur-3xl animate-float"
+          style={{ animationDelay: "3s" }}
+        />
+      </div>
+
+      <div className="relative pt-20 sm:pt-24 pb-12 md:pb-20 z-10">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-slate-400 hover:text-white transition-colors mb-8"
+            className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-8"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Volver al inicio</span>
           </Link>
 
           <div className="text-center mb-8 md:mb-12">
-            <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-gradient-to-r from-primary-500/20 to-purple-600/20 border border-primary-500/30 mb-3 sm:mb-4">
-              <Mail className="w-3 h-3 sm:w-4 sm:h-4 text-primary-400" />
-              <span className="text-xs sm:text-sm bg-gradient-to-r from-primary-400 to-purple-400 bg-clip-text text-transparent font-semibold">
+            <div
+              className={`inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-secondary/10 border border-secondary/20 mb-3 sm:mb-4 ${
+                mounted ? "animate-fade-in" : "opacity-0"
+              }`}
+            >
+              <Mail className="w-3 h-3 sm:w-4 sm:h-4 text-secondary" />
+              <span className="text-xs sm:text-sm text-secondary font-semibold">
                 Estoy disponible
               </span>
             </div>
 
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-3 sm:mb-4">
-              <span className="bg-gradient-to-r from-white via-primary-200 to-purple-200 bg-clip-text text-transparent">
-                Contacto
-              </span>
-            </h1>
+            <div className={mounted ? "animate-scale-in" : "opacity-0"}>
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-3 sm:mb-4">
+                <span className="bg-gradient-to-r from-secondary via-accent to-secondary bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient">
+                  Contacto
+                </span>
+              </h1>
+            </div>
 
-            <p className="text-base sm:text-lg md:text-xl text-slate-400 max-w-3xl mx-auto mb-6 md:mb-8 px-2 sm:px-0">
+            <p
+              className={`text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-6 md:mb-8 px-2 sm:px-0 ${
+                mounted ? "animate-fade-in animate-delay-200" : "opacity-0"
+              }`}
+            >
               Elige cómo prefieres contactarme
             </p>
 
             {/* Mode Toggle */}
-            <div className="flex justify-center mb-6 md:mb-8">
-              <div className="inline-flex flex-col xs:flex-row bg-slate-900/50 border border-slate-800 rounded-xl p-1 w-full sm:w-auto max-w-md">
+            <div
+              className={`flex justify-center mb-6 md:mb-8 ${
+                mounted ? "animate-slide-in-up animate-delay-300" : "opacity-0"
+              }`}
+            >
+              <div className="inline-flex flex-col xs:flex-row bg-muted/50 border border-border rounded-xl p-1 w-full sm:w-auto max-w-md">
                 <button
                   onClick={() => setMode("schedule")}
                   className={`flex items-center justify-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg transition-all ${
                     mode === "schedule"
-                      ? "bg-gradient-to-r from-primary-500 to-purple-600 text-white shadow-lg"
-                      : "text-slate-400 hover:text-white"
+                      ? "bg-secondary text-secondary-foreground shadow-lg"
+                      : "text-muted-foreground hover:text-foreground"
                   }`}
                 >
                   <Calendar className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -160,8 +188,8 @@ export default function ContactoPage() {
                   onClick={() => setMode("message")}
                   className={`flex items-center justify-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg transition-all ${
                     mode === "message"
-                      ? "bg-gradient-to-r from-primary-500 to-purple-600 text-white shadow-lg"
-                      : "text-slate-400 hover:text-white"
+                      ? "bg-secondary text-secondary-foreground shadow-lg"
+                      : "text-muted-foreground hover:text-foreground"
                   }`}
                 >
                   <MessageSquare className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -175,25 +203,29 @@ export default function ContactoPage() {
 
           {/* Calendly Widget Mode */}
           {mode === "schedule" && (
-            <div>
+            <div
+              className={
+                mounted ? "animate-fade-in animate-delay-400" : "opacity-0"
+              }
+            >
               <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 md:gap-4 text-xs sm:text-sm mb-6 md:mb-8">
-                <div className="flex items-center gap-1.5 sm:gap-2 bg-gradient-to-br from-primary-500/10 to-purple-600/10 px-3 sm:px-4 py-2 sm:py-2.5 rounded-lg border border-primary-500/30">
-                  <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-primary-400" />
-                  <span className="text-slate-200">Lun-Vie, 9 AM - 7 PM</span>
+                <div className="flex items-center gap-1.5 sm:gap-2 bg-secondary/10 px-3 sm:px-4 py-2 sm:py-2.5 rounded-lg border border-secondary/20">
+                  <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-secondary" />
+                  <span className="text-foreground">Lun-Vie, 9 AM - 7 PM</span>
                 </div>
-                <div className="flex items-center gap-1.5 sm:gap-2 bg-gradient-to-br from-green-500/10 to-emerald-600/10 px-3 sm:px-4 py-2 sm:py-2.5 rounded-lg border border-green-500/30">
-                  <Video className="w-4 h-4 sm:w-5 sm:h-5 text-green-400" />
-                  <span className="text-slate-200">30-60 minutos</span>
+                <div className="flex items-center gap-1.5 sm:gap-2 bg-green-500/10 px-3 sm:px-4 py-2 sm:py-2.5 rounded-lg border border-green-500/20">
+                  <Video className="w-4 h-4 sm:w-5 sm:h-5 text-green-500" />
+                  <span className="text-foreground">30-60 minutos</span>
                 </div>
-                <div className="flex items-center gap-1.5 sm:gap-2 bg-gradient-to-br from-purple-500/10 to-pink-600/10 px-3 sm:px-4 py-2 sm:py-2.5 rounded-lg border border-purple-500/30">
-                  <div className="w-2 h-2 bg-purple-400 rounded-full animate-pulse"></div>
-                  <span className="text-slate-200">Google Meet</span>
+                <div className="flex items-center gap-1.5 sm:gap-2 bg-purple-500/10 px-3 sm:px-4 py-2 sm:py-2.5 rounded-lg border border-purple-500/20">
+                  <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse"></div>
+                  <span className="text-foreground">Google Meet</span>
                 </div>
               </div>
 
               <div
                 key={`calendly-${mode}`}
-                className="calendly-inline-widget w-full rounded-xl overflow-hidden"
+                className="calendly-inline-widget w-full rounded-xl overflow-hidden border border-border"
                 data-url={customCalendlyUrl}
                 style={{ minWidth: "320px", height: "700px" }}
               ></div>
@@ -202,16 +234,20 @@ export default function ContactoPage() {
 
           {/* Contact Form Mode */}
           {mode === "message" && (
-            <div className="max-w-2xl mx-auto">
-              <div className="bg-slate-900/50 backdrop-blur-xl border border-slate-800 rounded-2xl p-4 sm:p-6 md:p-8">
+            <div
+              className={`max-w-2xl mx-auto ${
+                mounted ? "animate-fade-in animate-delay-400" : "opacity-0"
+              }`}
+            >
+              <div className="bg-card/50 backdrop-blur-xl border border-border rounded-2xl p-4 sm:p-6 md:p-8 hover:border-secondary/50 transition-colors duration-300">
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                   <div>
                     <label
                       htmlFor="name"
-                      className="block text-sm font-medium text-slate-300 mb-2"
+                      className="block text-sm font-medium text-foreground mb-2"
                     >
                       <div className="flex items-center gap-2">
-                        <User className="w-4 h-4" />
+                        <User className="w-4 h-4 text-secondary" />
                         Nombre completo
                       </div>
                     </label>
@@ -219,10 +255,12 @@ export default function ContactoPage() {
                       id="name"
                       {...register("name")}
                       placeholder="Tu nombre"
-                      className={errors.name ? "border-red-500" : ""}
+                      className={`bg-background/50 border-border focus:border-secondary ${
+                        errors.name ? "border-destructive" : ""
+                      }`}
                     />
                     {errors.name && (
-                      <p className="mt-1 text-sm text-red-400">
+                      <p className="mt-1 text-sm text-destructive">
                         {errors.name.message}
                       </p>
                     )}
@@ -231,10 +269,10 @@ export default function ContactoPage() {
                   <div>
                     <label
                       htmlFor="email"
-                      className="block text-sm font-medium text-slate-300 mb-2"
+                      className="block text-sm font-medium text-foreground mb-2"
                     >
                       <div className="flex items-center gap-2">
-                        <Mail className="w-4 h-4" />
+                        <Mail className="w-4 h-4 text-secondary" />
                         Email
                       </div>
                     </label>
@@ -243,10 +281,12 @@ export default function ContactoPage() {
                       type="email"
                       {...register("email")}
                       placeholder="tu@email.com"
-                      className={errors.email ? "border-red-500" : ""}
+                      className={`bg-background/50 border-border focus:border-secondary ${
+                        errors.email ? "border-destructive" : ""
+                      }`}
                     />
                     {errors.email && (
-                      <p className="mt-1 text-sm text-red-400">
+                      <p className="mt-1 text-sm text-destructive">
                         {errors.email.message}
                       </p>
                     )}
@@ -255,10 +295,10 @@ export default function ContactoPage() {
                   <div>
                     <label
                       htmlFor="subject"
-                      className="block text-sm font-medium text-slate-300 mb-2"
+                      className="block text-sm font-medium text-foreground mb-2"
                     >
                       <div className="flex items-center gap-2">
-                        <MessageSquare className="w-4 h-4" />
+                        <MessageSquare className="w-4 h-4 text-secondary" />
                         Asunto
                       </div>
                     </label>
@@ -266,10 +306,12 @@ export default function ContactoPage() {
                       id="subject"
                       {...register("subject")}
                       placeholder="¿En qué puedo ayudarte?"
-                      className={errors.subject ? "border-red-500" : ""}
+                      className={`bg-background/50 border-border focus:border-secondary ${
+                        errors.subject ? "border-destructive" : ""
+                      }`}
                     />
                     {errors.subject && (
-                      <p className="mt-1 text-sm text-red-400">
+                      <p className="mt-1 text-sm text-destructive">
                         {errors.subject.message}
                       </p>
                     )}
@@ -278,7 +320,7 @@ export default function ContactoPage() {
                   <div>
                     <label
                       htmlFor="message"
-                      className="block text-sm font-medium text-slate-300 mb-2"
+                      className="block text-sm font-medium text-foreground mb-2"
                     >
                       Mensaje
                     </label>
@@ -287,10 +329,12 @@ export default function ContactoPage() {
                       {...register("message")}
                       placeholder="Escribe tu mensaje aquí..."
                       rows={6}
-                      className={errors.message ? "border-red-500" : ""}
+                      className={`bg-background/50 border-border focus:border-secondary ${
+                        errors.message ? "border-destructive" : ""
+                      }`}
                     />
                     {errors.message && (
-                      <p className="mt-1 text-sm text-red-400">
+                      <p className="mt-1 text-sm text-destructive">
                         {errors.message.message}
                       </p>
                     )}
@@ -299,12 +343,12 @@ export default function ContactoPage() {
                   <Button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-gradient-to-r from-primary-500 to-purple-600 hover:from-primary-600 hover:to-purple-700 shadow-lg"
+                    className="w-full bg-secondary text-secondary-foreground hover:bg-secondary/90 shadow-lg"
                     size="lg"
                   >
                     {isSubmitting ? (
                       <>
-                        <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin mr-2" />
+                        <div className="w-5 h-5 border-2 border-current border-t-transparent rounded-full animate-spin mr-2" />
                         Enviando...
                       </>
                     ) : (
@@ -320,13 +364,17 @@ export default function ContactoPage() {
           )}
 
           {/* Footer Info */}
-          <div className="mt-8 md:mt-12 text-center">
-            <p className="text-sm text-slate-500 mb-3">
+          <div
+            className={`mt-8 md:mt-12 text-center ${
+              mounted ? "animate-fade-in animate-delay-500" : "opacity-0"
+            }`}
+          >
+            <p className="text-sm text-muted-foreground mb-3">
               También puedes escribirme directamente:
             </p>
             <a
               href="mailto:mateogaviraghi24@gmail.com"
-              className="inline-flex items-center gap-2 text-primary-400 hover:text-primary-300 transition-colors font-medium"
+              className="inline-flex items-center gap-2 text-secondary hover:text-secondary/80 transition-colors font-medium"
             >
               <Mail className="w-4 h-4" />
               <span>mateogaviraghi24@gmail.com</span>
