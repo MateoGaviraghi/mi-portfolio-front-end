@@ -42,11 +42,17 @@ export function MobileMenu({
             <Link href="/projects" onClick={onClose}>
               Proyectos
             </Link>
+            <Link href="/sobre-mi" onClick={onClose}>
+              Sobre Mí
+            </Link>
             <Link href="/skills" onClick={onClose}>
               Skills
             </Link>
             <Link href="/reviews" onClick={onClose}>
               Reviews
+            </Link>
+            <Link href="/contacto" onClick={onClose}>
+              Contacto
             </Link>
 
             {/* Admin Menu Desplegable */}

@@ -25,14 +25,14 @@ export default function ReviewsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 pt-24 pb-12">
-      <div className="container max-w-7xl mx-auto px-6">
+    <div className="min-h-screen bg-slate-950 pt-20 sm:pt-24 pb-12">
+      <div className="container max-w-7xl mx-auto px-4 sm:px-6">
         {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent mb-4">
+        <div className="text-center mb-8 md:mb-12">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent mb-3 sm:mb-4">
             Lo que dicen sobre mí
           </h1>
-          <p className="text-slate-400 text-lg mb-8">
+          <p className="text-slate-400 text-base sm:text-lg mb-6 sm:mb-8 px-2 sm:px-0">
             Testimonios de clientes y colegas con quienes he trabajado
           </p>
 
@@ -49,7 +49,7 @@ export default function ReviewsPage() {
 
         {/* Form */}
         {showForm && (
-          <div className="bg-slate-900/50 backdrop-blur-sm border border-slate-800 rounded-xl p-8 mb-12 max-w-3xl mx-auto">
+          <div className="bg-slate-900/50 backdrop-blur-sm border border-slate-800 rounded-xl p-4 sm:p-6 md:p-8 mb-8 md:mb-12 max-w-3xl mx-auto">
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-2xl font-bold text-white">Nueva Review</h2>
               <Button
@@ -73,7 +73,7 @@ export default function ReviewsPage() {
             <div className="animate-spin w-8 h-8 border-4 border-primary-500 border-t-transparent rounded-full mx-auto"></div>
           </div>
         ) : reviews && reviews.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6">
             {reviews.map((review) => (
               <ReviewCard key={review._id} review={review} />
             ))}

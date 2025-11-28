@@ -7,15 +7,15 @@ export default function Footer() {
       {/* Gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-t from-slate-900/50 to-transparent pointer-events-none"></div>
 
-      <div className="relative max-w-7xl mx-auto px-6 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-8 md:py-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 mb-6 md:mb-8">
           {/* Brand */}
-          <div className="space-y-4">
-            <div className="flex items-center gap-3">
+          <div className="space-y-3 md:space-y-4 text-center sm:text-left">
+            <div className="flex items-center gap-3 justify-center sm:justify-start">
               <div className="w-10 h-10 bg-gradient-to-br from-primary-500 to-purple-600 rounded-lg flex items-center justify-center font-bold text-white">
                 M
               </div>
-              <span className="font-bold text-xl text-white">
+              <span className="font-bold text-lg md:text-xl text-white">
                 Mateo Gaviraghi
               </span>
             </div>
@@ -26,7 +26,7 @@ export default function Footer() {
           </div>
 
           {/* Links */}
-          <div className="space-y-4">
+          <div className="space-y-3 md:space-y-4 text-center sm:text-left">
             <h3 className="text-white font-semibold">Navegación</h3>
             <nav className="flex flex-col gap-2">
               <Link
@@ -50,10 +50,10 @@ export default function Footer() {
             </nav>
           </div>
 
-          {/* Social */}
-          <div className="space-y-4">
-            <h3 className="text-white font-semibold">Conecta conmigo</h3>
-            <div className="flex gap-3">
+          {/* Contact */}
+          <div className="space-y-3 md:space-y-4 text-center sm:text-left">
+            <h3 className="text-white font-semibold">Contact</h3>
+            <div className="flex justify-center sm:justify-start gap-3">
               <a
                 href="https://github.com/MateoGaviraghi"
                 target="_blank"

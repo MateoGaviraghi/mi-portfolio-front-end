@@ -112,8 +112,8 @@ export default function ContactoPage() {
 
   return (
     <div className="min-h-screen bg-slate-950 text-white">
-      <div className="relative pt-24 pb-20">
-        <div className="max-w-6xl mx-auto px-6">
+      <div className="relative pt-20 sm:pt-24 pb-12 md:pb-20">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <Link
             href="/"
             className="inline-flex items-center gap-2 text-slate-400 hover:text-white transition-colors mb-8"
@@ -122,48 +122,52 @@ export default function ContactoPage() {
             <span>Volver al inicio</span>
           </Link>
 
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-primary-500/20 to-purple-600/20 border border-primary-500/30 mb-4">
-              <Mail className="w-4 h-4 text-primary-400" />
-              <span className="text-sm bg-gradient-to-r from-primary-400 to-purple-400 bg-clip-text text-transparent font-semibold">
+          <div className="text-center mb-8 md:mb-12">
+            <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-gradient-to-r from-primary-500/20 to-purple-600/20 border border-primary-500/30 mb-3 sm:mb-4">
+              <Mail className="w-3 h-3 sm:w-4 sm:h-4 text-primary-400" />
+              <span className="text-xs sm:text-sm bg-gradient-to-r from-primary-400 to-purple-400 bg-clip-text text-transparent font-semibold">
                 Estoy disponible
               </span>
             </div>
 
-            <h1 className="text-5xl md:text-6xl font-bold mb-4">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-3 sm:mb-4">
               <span className="bg-gradient-to-r from-white via-primary-200 to-purple-200 bg-clip-text text-transparent">
                 Contacto
               </span>
             </h1>
 
-            <p className="text-xl text-slate-400 max-w-3xl mx-auto mb-8">
+            <p className="text-base sm:text-lg md:text-xl text-slate-400 max-w-3xl mx-auto mb-6 md:mb-8 px-2 sm:px-0">
               Elige cómo prefieres contactarme
             </p>
 
             {/* Mode Toggle */}
-            <div className="flex justify-center mb-8">
-              <div className="inline-flex bg-slate-900/50 border border-slate-800 rounded-xl p-1">
+            <div className="flex justify-center mb-6 md:mb-8">
+              <div className="inline-flex flex-col xs:flex-row bg-slate-900/50 border border-slate-800 rounded-xl p-1 w-full sm:w-auto max-w-md">
                 <button
                   onClick={() => setMode("schedule")}
-                  className={`flex items-center gap-2 px-6 py-3 rounded-lg transition-all ${
+                  className={`flex items-center justify-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg transition-all ${
                     mode === "schedule"
                       ? "bg-gradient-to-r from-primary-500 to-purple-600 text-white shadow-lg"
                       : "text-slate-400 hover:text-white"
                   }`}
                 >
-                  <Calendar className="w-5 h-5" />
-                  <span className="font-medium">Agendar Reunión</span>
+                  <Calendar className="w-4 h-4 sm:w-5 sm:h-5" />
+                  <span className="font-medium text-sm sm:text-base">
+                    Agendar Reunión
+                  </span>
                 </button>
                 <button
                   onClick={() => setMode("message")}
-                  className={`flex items-center gap-2 px-6 py-3 rounded-lg transition-all ${
+                  className={`flex items-center justify-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg transition-all ${
                     mode === "message"
                       ? "bg-gradient-to-r from-primary-500 to-purple-600 text-white shadow-lg"
                       : "text-slate-400 hover:text-white"
                   }`}
                 >
-                  <MessageSquare className="w-5 h-5" />
-                  <span className="font-medium">Enviar Mensaje</span>
+                  <MessageSquare className="w-4 h-4 sm:w-5 sm:h-5" />
+                  <span className="font-medium text-sm sm:text-base">
+                    Enviar Mensaje
+                  </span>
                 </button>
               </div>
             </div>
@@ -172,16 +176,16 @@ export default function ContactoPage() {
           {/* Calendly Widget Mode */}
           {mode === "schedule" && (
             <div>
-              <div className="flex flex-wrap items-center justify-center gap-4 text-sm mb-8">
-                <div className="flex items-center gap-2 bg-gradient-to-br from-primary-500/10 to-purple-600/10 px-4 py-2.5 rounded-lg border border-primary-500/30">
-                  <Clock className="w-5 h-5 text-primary-400" />
+              <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 md:gap-4 text-xs sm:text-sm mb-6 md:mb-8">
+                <div className="flex items-center gap-1.5 sm:gap-2 bg-gradient-to-br from-primary-500/10 to-purple-600/10 px-3 sm:px-4 py-2 sm:py-2.5 rounded-lg border border-primary-500/30">
+                  <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-primary-400" />
                   <span className="text-slate-200">Lun-Vie, 9 AM - 7 PM</span>
                 </div>
-                <div className="flex items-center gap-2 bg-gradient-to-br from-green-500/10 to-emerald-600/10 px-4 py-2.5 rounded-lg border border-green-500/30">
-                  <Video className="w-5 h-5 text-green-400" />
+                <div className="flex items-center gap-1.5 sm:gap-2 bg-gradient-to-br from-green-500/10 to-emerald-600/10 px-3 sm:px-4 py-2 sm:py-2.5 rounded-lg border border-green-500/30">
+                  <Video className="w-4 h-4 sm:w-5 sm:h-5 text-green-400" />
                   <span className="text-slate-200">30-60 minutos</span>
                 </div>
-                <div className="flex items-center gap-2 bg-gradient-to-br from-purple-500/10 to-pink-600/10 px-4 py-2.5 rounded-lg border border-purple-500/30">
+                <div className="flex items-center gap-1.5 sm:gap-2 bg-gradient-to-br from-purple-500/10 to-pink-600/10 px-3 sm:px-4 py-2 sm:py-2.5 rounded-lg border border-purple-500/30">
                   <div className="w-2 h-2 bg-purple-400 rounded-full animate-pulse"></div>
                   <span className="text-slate-200">Google Meet</span>
                 </div>
@@ -191,7 +195,7 @@ export default function ContactoPage() {
                 key={`calendly-${mode}`}
                 className="calendly-inline-widget w-full rounded-xl overflow-hidden"
                 data-url={customCalendlyUrl}
-                style={{ minWidth: "320px", height: "1000px" }}
+                style={{ minWidth: "320px", height: "700px" }}
               ></div>
             </div>
           )}
@@ -199,7 +203,7 @@ export default function ContactoPage() {
           {/* Contact Form Mode */}
           {mode === "message" && (
             <div className="max-w-2xl mx-auto">
-              <div className="bg-slate-900/50 backdrop-blur-xl border border-slate-800 rounded-2xl p-8">
+              <div className="bg-slate-900/50 backdrop-blur-xl border border-slate-800 rounded-2xl p-4 sm:p-6 md:p-8">
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                   <div>
                     <label
@@ -316,7 +320,7 @@ export default function ContactoPage() {
           )}
 
           {/* Footer Info */}
-          <div className="mt-12 text-center">
+          <div className="mt-8 md:mt-12 text-center">
             <p className="text-sm text-slate-500 mb-3">
               También puedes escribirme directamente:
             </p>

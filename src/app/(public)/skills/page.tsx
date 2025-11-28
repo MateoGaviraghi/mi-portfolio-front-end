@@ -24,18 +24,18 @@ export default function SkillsPage() {
 
   return (
     <div className="min-h-screen bg-slate-950">
-      <div className="max-w-7xl mx-auto px-6 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 md:py-12">
         {/* Header */}
-        <div className="mb-12 space-y-4">
+        <div className="mb-8 md:mb-12 space-y-4">
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-primary-500 to-purple-600 flex items-center justify-center">
-              <Zap className="w-6 h-6 text-white" />
+            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-gradient-to-br from-primary-500 to-purple-600 flex items-center justify-center">
+              <Zap className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
             </div>
             <div>
-              <h1 className="text-4xl font-bold bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">
+              <h1 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">
                 Skills & Tecnologías
               </h1>
-              <p className="text-slate-400 mt-1">
+              <p className="text-sm sm:text-base text-slate-400 mt-1">
                 Mi stack tecnológico y nivel de experiencia
               </p>
             </div>
@@ -74,7 +74,7 @@ export default function SkillsPage() {
                   <div className="h-px flex-1 bg-gradient-to-r from-transparent via-slate-800 to-transparent" />
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6">
                   {categorySkills.map((skill) => (
                     <SkillCard key={skill._id} skill={skill} />
                   ))}
@@ -98,7 +98,7 @@ export default function SkillsPage() {
 
         {/* Stats Summary */}
         {!isLoading && !error && skills && skills.length > 0 && (
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="mt-8 md:mt-12 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6">
             <div className="bg-gradient-to-br from-primary-500/10 to-purple-600/10 border border-primary-500/30 rounded-xl p-6 text-center">
               <div className="text-4xl font-bold text-primary-400 mb-2">
                 {skills.length}

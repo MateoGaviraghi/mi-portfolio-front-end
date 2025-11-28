@@ -26,35 +26,35 @@ const skills = {
 
 export function AboutSection() {
   return (
-    <section className="relative py-32 bg-slate-950 overflow-hidden">
+    <section className="relative py-20 sm:py-24 md:py-32 bg-slate-950 overflow-hidden">
       {/* Background decorations */}
       <div className="absolute inset-0">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary-500/10 rounded-full blur-3xl"></div>
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-6">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-12 md:mb-16"
         >
-          <h2 className="text-5xl md:text-6xl font-bold mb-4">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-3 sm:mb-4">
             <span className="bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">
               Sobre Mí
             </span>
           </h2>
-          <p className="text-xl text-slate-400 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-slate-400 max-w-2xl mx-auto px-2 sm:px-0">
             Desarrollador Full Stack apasionado por crear soluciones completas
             desde el frontend hasta el backend
           </p>
         </motion.div>
 
         {/* Main Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 md:gap-12 mb-12 md:mb-16">
           {/* Bio */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -63,7 +63,7 @@ export function AboutSection() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="space-y-6"
           >
-            <div className="space-y-4 text-lg text-slate-300 leading-relaxed">
+            <div className="space-y-4 text-base sm:text-lg text-slate-300 leading-relaxed">
               <p>
                 Soy un{" "}
                 <span className="text-primary-400 font-semibold">
@@ -111,7 +111,7 @@ export function AboutSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="grid grid-cols-2 gap-4"
+            className="grid grid-cols-1 sm:grid-cols-2 gap-4"
           >
             <div className="bg-slate-900/50 border border-slate-800 rounded-xl p-6 hover:border-primary-500/50 transition-all">
               <div className="w-12 h-12 bg-primary-500/10 rounded-lg flex items-center justify-center mb-4">
@@ -161,7 +161,7 @@ export function AboutSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6"
         >
           {/* Frontend Skills */}
           <div className="bg-gradient-to-br from-primary-500/10 to-blue-600/10 border border-primary-500/30 rounded-xl p-6">

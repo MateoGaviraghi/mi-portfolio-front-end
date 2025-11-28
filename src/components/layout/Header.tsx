@@ -32,23 +32,26 @@ export default function Header() {
           : "bg-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 py-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 md:py-4">
         <div className="flex items-center justify-between">
           {/* Logo con animación */}
-          <Link href="/" className="group flex items-center gap-3 relative">
+          <Link
+            href="/"
+            className="group flex items-center gap-2 sm:gap-3 relative"
+          >
             <div className="relative">
               <div className="absolute -inset-2 bg-gradient-to-r from-primary-500 to-purple-600 rounded-lg blur opacity-30 group-hover:opacity-100 transition duration-300"></div>
-              <div className="relative w-10 h-10 bg-gradient-to-br from-primary-500 to-purple-600 rounded-lg flex items-center justify-center font-bold text-white text-xl">
+              <div className="relative w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-primary-500 to-purple-600 rounded-lg flex items-center justify-center font-bold text-white text-base sm:text-xl">
                 M
               </div>
             </div>
-            <span className="font-bold text-xl bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">
+            <span className="font-bold text-base sm:text-lg md:text-xl bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">
               Mateo Gaviraghi
             </span>
           </Link>
 
           {/* Navegación Desktop */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden xl:flex items-center gap-4 lg:gap-8">
             <Link
               href="/projects"
               className={`text-slate-300 hover:text-white transition-colors relative group ${
@@ -120,8 +123,8 @@ export default function Header() {
           </nav>
 
           {/* Auth & Social */}
-          <div className="flex items-center gap-4">
-            <div className="hidden lg:flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-4">
+            <div className="hidden sm:flex items-center gap-2 lg:gap-3">
               <a
                 href="https://github.com/MateoGaviraghi"
                 target="_blank"
@@ -173,7 +176,7 @@ export default function Header() {
             )}
 
             <button
-              className="md:hidden text-white p-2"
+              className="xl:hidden text-white p-2"
               onClick={() => setOpen(true)}
               aria-label="Abrir menú"
             >
